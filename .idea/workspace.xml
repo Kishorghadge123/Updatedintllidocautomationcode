@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="10a64d68-2b6d-4e5f-af5b-34e959c1323c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/allure-results/0a112c1d-fe89-47ca-b921-2bb64dc09789-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/0bce7017-8920-4b82-9891-a17bae8c8af2-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/2a5c8a49-dee2-44da-a4d3-25c09a9f85ea-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/2b7e5aa6-b94c-4832-891f-caa9ad29d68b-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/3f96bd74-7916-4d34-a4bd-1706cb6161b5-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/3ffcfa42-b0c0-42a9-b0a7-3bcf6f6e59df-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/4438a2d4-a735-4200-905c-0357a367e2fb-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/528c3c55-e783-48e3-bd73-db3f108a91ad-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/55df4a37-cb82-475f-b7e8-1df6738da6e1-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/5a8dbca0-03ca-4894-8065-3670f4d7b1a4-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/5bda34b5-e6c2-4c1b-b312-decaafe62d99-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/5cb9ad14-e37b-4453-8aab-8ecc38dfa72e-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/6166837e-bc36-41c0-aaf1-bb21a2defae4-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/766ceca8-dac6-401e-ac74-cd601a5830ed-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/7b352433-f7a7-432d-b9df-fefc5dae748c-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/8783d387-648f-4b17-bdbe-3e9ddf3d3464-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/8e153c79-7d69-4aa5-b2bc-a8c9184a7898-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/9e2874cc-04f0-4600-a021-39a56c8bd3c6-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/a51e2ad5-58a7-40bd-aa25-e5fc85f12ce5-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/bad6626c-e1af-4ff0-9f87-efad8409b52a-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/bc0d8467-2af0-40e2-a427-357623edf154-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/cc7dd2de-875e-4623-9ba6-e58ba2d04914-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/cfbe3672-ad8c-48e1-918a-0e55d897cac6-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/d061cdfe-fcd2-4109-89b6-c103d886cfad-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/d1ebd6be-06a0-49e9-ac73-6c397e66e99b-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/d264365a-daba-425a-abf0-17b12c1dd465-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/d343ac83-2977-43e2-a63c-4eee872760e2-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/e12aec7a-baa1-40e6-8f2f-e3c43483fc5e-result.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/e4cac83b-df52-499f-8104-c17c7c2e4127-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/ee6f5807-2119-4dae-bcb5-750c1d74521c-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/eed012c2-8f76-47a9-b71c-7f95353c265c-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/f58626d6-1f98-4094-819b-692975ff093e-container.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/allure-results/f980fbc7-7d36-4f72-9a1a-55ae18bc1967-container.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Pages/AuditPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Pages/AuditPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Tests/AuditTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests/AuditTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Tests/DataSetTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests/DataSetTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Tests/DocumentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests/DocumentTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Tests/ProjectModuleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests/ProjectModuleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Tests/ReportTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests/ReportTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Tests/TemplateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests/TemplateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Tests/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests/UserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Utilities/Scroll_Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Utilities/Scroll_Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Utilities/TestListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Utilities/TestListeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Pages/AuditPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Pages/AuditPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Tests/AuditTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Tests/AuditTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Tests/DataSetTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Tests/DataSetTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Tests/DocumentTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Tests/DocumentTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Tests/ProjectModuleTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Tests/ProjectModuleTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Tests/ReportTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Tests/ReportTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Tests/TemplateTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Tests/TemplateTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Tests/UserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Tests/UserTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2F287si7yDN5Iovrb7IbLZjtKPJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/NTS-AmitKorade/OneDrive/Desktop/Product_Automation/ProductIntelliDocAutomation/IntilliDoc_Product_JAN2022",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.1150748",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
+  <component name="RunManager" selected="TestNG.AuditTest.verify_That_Data_Extracted_From_Document">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="IntilliDoc_Product_JAN2022" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="IntilliDoc_Product_JAN2022" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuditTest.m1" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="IntelliDoc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.AuditTest" />
+      <option name="METHOD_NAME" value="m1" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuditTest.verfiyDocStatusIsDiaplayInTableAsPerFilter" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="IntelliDoc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.AuditTest" />
+      <option name="METHOD_NAME" value="verfiyDocStatusIsDiaplayInTableAsPerFilter" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuditTest.verifyTextOfAuditTab" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="IntelliDoc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.AuditTest" />
+      <option name="METHOD_NAME" value="verifyTextOfAuditTab" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuditTest.verify_That_Data_Extracted_From_Document" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="IntelliDoc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.AuditTest" />
+      <option name="METHOD_NAME" value="verify_That_Data_Extracted_From_Document" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="C:/Users/NTS-AmitKorade/OneDrive/Desktop/Product_Automation/ProductIntelliDocAutomation/IntilliDoc_Product_JAN2022/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="IntelliDoc" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/testng.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.AuditTest.verify_That_Data_Extracted_From_Document" />
+        <item itemvalue="TestNG.AuditTest.m1" />
+        <item itemvalue="TestNG.C:/Users/NTS-AmitKorade/OneDrive/Desktop/Product_Automation/ProductIntelliDocAutomation/IntilliDoc_Product_JAN2022/testng.xml" />
+        <item itemvalue="TestNG.AuditTest.verifyTextOfAuditTab" />
+        <item itemvalue="TestNG.AuditTest.verfiyDocStatusIsDiaplayInTableAsPerFilter" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10a64d68-2b6d-4e5f-af5b-34e959c1323c" name="Changes" comment="" />
+      <created>1663678654605</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663678654605</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
