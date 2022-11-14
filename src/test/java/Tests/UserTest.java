@@ -1,7 +1,9 @@
 package Tests;
 
+import Pages.LoginPage;
 import Pages.UserPage;
 import Utilities.Custome_Wait;
+import Utilities.DateTimeUtils;
 import Utilities.SortingLists;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -378,8 +380,6 @@ public void teardown(){
         waitForloadSpinner();
         userPage.userclickOnUserTab();
         waitForloadSpinner();
-        /*String userEmailId = "test@gmail.com";
-                //"jyoti@yopmail.com";*/
         userPage.clickonGridIcon();
         userPage.searchUserInGridView(userEmailId);
         boolean userStatusInGrid = userPage.getUserStatusInUserGrid(userEmailId);
@@ -404,9 +404,76 @@ public void teardown(){
         };
     }
 
+    @Story("story_id: 011 -login_with_another_user")
+    @Description("login_with_another_user")
+    @Test(priority = 11, groups = "smoke", description = "login_with_another_user")
+    public void login_with_another_user() throws Exception {
+        userPage=new UserPage(driver);
+        loginPage = new LoginPage(driver);
+        waitForloadSpinner();
+        userPage.clickOnLogoutButton();
+        waitForloadSpinner();
+        loginPage.EnterUsername("Supervisor@Test.com");
+        loginPage.setPassword("Super@1111");
+        loginPage.clickLoginButton();
 
+    }
+    @Story("story_id: 012 -verify user updated date greater than created date")
+    @Description("verify_user_updated_date_greater_than_created_date")
+    @Test(priority = 12, groups = "smoke", description = "verify_user_updated_date_greater_than_created_date")
+    public void verifyUserUpdatedDate() throws Exception {
+        userPage = new UserPage(driver);
+        waitForloadSpinner();
+        userPage.userclickOnUserTab();
+        waitForloadSpinner();
+        String userEmailId = "michael223@gmail.com";
+        //"pradnyaauditor@gmail.com";*/
+        userPage.clickonGridIcon();
+        userPage.searchUserInGridView(userEmailId);
+        //softAssert = new SoftAssert();
+        System.out.println("Created Date: "+ userPage.getCreatedDateOfSearchedUserInGridView()+"  |  Updated Date: "+userPage.getUpdatedDateOfSearchedUserInGridView());
+        Assert.assertTrue(DateTimeUtils.compareDates
+                        (userPage.getCreatedDateOfSearchedUserInGridView(),userPage.getUpdatedDateOfSearchedUserInGridView())
+                , "Updated Date is not greater than Created Date for the user.");
+    }
+
+    @Story("story_id: 013 -verify the format of the dates in users page")
+    @Description("verify_the_format_of_the_dates_in_users_page")
+    @Test(priority = 13, groups = "smoke", description = "verify_the_format_of_the_dates_in_users_page")
+    public void verifyDateFormatInUsersPage() throws Exception {
+        userPage = new UserPage(driver);
+        waitForloadSpinner();
+        userPage.userclickOnUserTab();
+        waitForloadSpinner();
+        String userEmailId = "michael223@gmail.com";
+        userPage.clickonGridIcon();
+        userPage.searchUserInGridView(userEmailId);
+        Assert.assertTrue(DateTimeUtils.verifyDateFormat(userPage.getCreatedDateOfSearchedUserInGridView())
+                , "Date is not in correct format.");
+    }
+
+    @Story("story_id: 014 -verify user updated date greater than created date for all users")
+    @Description("verify_user_updated_date_greater_than_created_date")
+    @Test(priority = 14, groups = "smoke", description = "verify_user_updated_date_greater_than_created_date_for_all_users")
+    public void verifyUserUpdatedDateForAllUsers() throws Exception {
+        softAssert = new SoftAssert();
+        userPage = new UserPage(driver);
+        waitForloadSpinner();
+        userPage.userclickOnUserTab();
+        waitForloadSpinner();
+        userTiles = userPage.getListOfUserTiles();
+        System.out.println(userTiles.size());
+        for (int i = 1; i <= userTiles.size(); i++) {
+            softAssert.assertTrue(DateTimeUtils.compareDates(userPage.getCreatedDateFromUserTile(i),userPage.getUpdatedDateFromUserTile(i))
+                    , "Updated Date ("+userPage.getUpdatedDateFromUserTile(i)+") is not greater than Created Date ("+userPage.getCreatedDateFromUserTile(i)+") for the user.");
+
+        }
+        softAssert.assertAll();
+    }
 
 }
+
+
 
 
 

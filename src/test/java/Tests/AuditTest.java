@@ -31,10 +31,10 @@ public class AuditTest extends BaseTest {
         loginApplication();
     }
 
-//    @AfterMethod
-//    public void tearDown() {
-//        driver.quit();
-//    }
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
 
     @Severity(SeverityLevel.NORMAL)
     @Story("story_id: 001 - verify Drop Downs Of Analytics And Filters In AuditPage")
@@ -47,8 +47,7 @@ public class AuditTest extends BaseTest {
         waitForloadSpinner();
         auditPage.ClickOnDropDownsInAuditPage(1);
         Assert.assertTrue(driver.findElement(By.xpath("(//div[contains(@class,'row user-info-container ng-tns-c')])[1]")).isDisplayed());
-        auditPage.ClickOnDropDownsInAuditPage(2);
-        Assert.assertTrue(driver.findElement(By.xpath("(//div[contains(@class,'row user-info-container ng-tns-c')])[2]")).isDisplayed());
+
     }
     @Severity(SeverityLevel.NORMAL)
     @Story("story_id: 002 - verify total Count Of Audited and Audit Pending documents")

@@ -26,10 +26,10 @@ public class LoginTest extends BaseTest {
     public void setmethod() throws Exception {
         setup();
     }
-//    @AfterMethod
-//    public void tearDown() {
-//        driver.close();
-//    }
+    @AfterMethod
+    public void tearDown() {
+        driver.close();
+    }
 
     @Severity(SeverityLevel.CRITICAL)
     @Story("story_id: 001  - verification of test log in functinality")
@@ -181,7 +181,6 @@ public class LoginTest extends BaseTest {
 
         };
     }
-
     @Severity(SeverityLevel.CRITICAL)
     @Story("story_id: 002  - verification of title logo and login with blank details")
     @Description("verification_of_title_logo_and_login_with_blank_details")
@@ -224,8 +223,6 @@ public class LoginTest extends BaseTest {
         String ActualText = driver.findElement(By.xpath("//span[text()='User does not exist']")).getText();
         Assert.assertEquals(ActualText, "User does not exist");
     }
-
-
     @Severity(SeverityLevel.NORMAL)
     @Story("story_id: 005 - verify forgot password  email textfield functinality")
     @Description("verify forgot password  email textfield functinality")
@@ -237,10 +234,6 @@ public class LoginTest extends BaseTest {
         loginPage.enterEmail("bagalpratikshagmail.com");
         Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),' *Please Check Email Id ')]")).getText(),"*Please Check Email Id");
     }
-
-
-
-
     @Severity(SeverityLevel.NORMAL)
     @Story("story_id: 006 - verify_forgot_password_Functinality_When_User_Is_Disable")
     @Description("verify_forgot_password_Functinality_When_User_Is_Disable")

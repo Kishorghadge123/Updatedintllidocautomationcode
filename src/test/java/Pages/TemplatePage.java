@@ -3,13 +3,16 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import java.io.IOException;
 import java.util.List;
 public class TemplatePage {
     WebDriver driver = null;
+    Actions action;
 
     public TemplatePage(WebDriver driver) throws IOException {
         this.driver = driver;
@@ -48,6 +51,35 @@ public class TemplatePage {
 
     @FindBy(xpath = "//i[@class='fa fa-search-minus']")
     public WebElement zoomOutButton;
+
+
+    @FindBy(how = How.XPATH,using="//mat-icon[text()=' chevron_right ']")
+    public WebElement expandSearchedTemplateRowIcon;
+
+    @FindBy(how= How.XPATH, using = "//mat-icon[text()='subdirectory_arrow_right']")
+    public WebElement openPDFTrainingScreenIcon;
+
+    @FindBy(how=How.CSS, using="img.navbar-brand-minimized")
+    public WebElement companyLogoIcon;
+
+    @FindBy(how= How.XPATH, using= "//input[@formcontrolname='attributeName']")
+    public WebElement fieldNameTextBox;
+
+    @FindBy(how=How.CSS, using= "div.mat-select-trigger")
+    public WebElement validationDropDown;
+
+    @FindBy(how=How.XPATH,using="//span[text()='Map']")
+    public WebElement mapButton;
+
+
+    @FindBy(xpath = "//span[@class=\"mat-checkbox-inner-container mat-checkbox-inner-container-no-side-margin\"]")
+    public WebElement mattribute;
+
+
+    @FindBy(xpath = "(//span[contains(text(),'Update')])[1]")
+    public WebElement update;
+
+
 
     @FindBy(xpath = "//span[contains(text(),' Cancel ')]")
     public WebElement cancelbutton;
@@ -100,6 +132,64 @@ public class TemplatePage {
     }
     public void clickOnCancelButton(){
         this.cancelbutton.click();
+    }
+
+
+    public void searchTemplate(String templateName){
+        this.searchBox.sendKeys(templateName);
+    }
+
+    public void expandSearchedTemplateRow(){
+        expandSearchedTemplateRowIcon.click();
+    }
+
+    public void openPDFTrainingScreen(){
+        openPDFTrainingScreenIcon.click();
+    }
+
+    public void cropAttributeValueInPDFDoc(int offsetX, int offsetY){
+        action = new Actions(driver);
+        action.moveToElement(companyLogoIcon, offsetX, offsetY);
+        action.clickAndHold().moveByOffset(40, 20).release().build().perform();
+
+    }
+
+    public void enterFieldName(String fieldName){
+        fieldNameTextBox.sendKeys(fieldName);
+    }
+    public void selectValidationColumn(String colName){
+        validationDropDown.click();
+        driver.findElement(By.xpath("//mat-option/span[text()=' "+colName+" ']")).click();
+    }
+
+
+
+
+    public void clickMapButton(){
+        mapButton.click();
+    }
+
+
+    public  void  clickOnMandtoryField(){
+        this.mattribute.click();
+    }
+
+    public  void clickOnUpdateButtonOfMandtoryField(){
+        this.update.click();
+    }
+
+    public int getCountOfMappings(){
+        return driver.findElements(By.xpath("//mat-table/mat-row")).size();
+    }
+
+    public String getDetailsFromMappingTable(int rowIndex, String headerName){
+        return driver.findElement(By.xpath("(//mat-table/mat-row)["+rowIndex+"]"))
+                .findElement(By.cssSelector("mat-cell[class*='"+headerName+"']")).getText().trim();
+    }
+
+    public void removeMappingFromTable(int rowIndex){
+        driver.findElement(By.xpath("(//mat-table/mat-row)["+rowIndex+"]"))
+                .findElement(By.cssSelector("mat-cell[class*=action]>button")).click();
     }
 
     public void clickOnUploadTemplatesButton(){

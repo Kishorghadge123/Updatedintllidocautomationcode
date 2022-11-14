@@ -7,10 +7,7 @@ import Utilities.SortingLists;
 import io.qameta.allure.*;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import java.awt.*;
@@ -314,6 +311,66 @@ public class CreateRoleTest extends BaseTest {
     }
 
 
+    @Severity(SeverityLevel.NORMAL)
+    @Story("story_id: 011 - verifyRolewithreleasebuttonfunctionality")
+    @Description("verifyRolewithreleasebuttonfunctionality")
+    @Test(priority = 11, groups = "smoke", description = "verifyRolewithreleasebuttonfunctionality")
+    public void verifyRolewithreleasebuttonfunctionality() throws Exception {
+        createRolePage = new CreateRolePage(driver);
+        clickOnOutSide = new ClickOnOutSide(driver);
+        softAssert = new SoftAssert();
+        custom = new Custome_Wait(driver);
+        waitForloadSpinner();
+        createRolePage.clickRoleBtn();
+        waitForloadSpinner();
+        createRolePage.clickCreateRoleBtn();
+        waitForloadSpinner();
+        createRolePage.EnterNewRoleName("O");
+        createRolePage.activateButton();
+        createRolePage.activateButton();
+        softAssert.assertEquals(driver.findElement(By.xpath("//mat-error[contains(text(),'Please enter at least 3 characters.')]")).getText(), "Please enter at least 3 characters.");
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' Add permission ')]")));
+        createRolePage.addPermission();
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//button[contains(text(),' Role')]")));
+        createRolePage.roleOption1();
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//div[contains(text(),' Process Document ')]")));
+       softAssert.assertEquals(driver.findElement(By.xpath("//div[contains(text(),' Audit Document ')]")).getText(),"Audit Document");
+      softAssert.assertEquals(driver.findElement(By.xpath("//div[contains(text(),' Release Document ')]")).getText(),"Release Document");
+        softAssert.assertAll();
+    }
+    @Story("story_id: 001 -verify role active status")
+    @Description("verify_role_active_status")
+    @Test(priority = 1, groups = "smoke", description = "verify_role_active_status", dataProvider = "roleTitles")
+    public void verifyRoleActiveInactiveStatus(String roleTitle) throws Exception {
+        createRolePage = new CreateRolePage(driver);
+        waitForloadSpinner();
+        createRolePage.clickOnRolesTab();
+        waitForloadSpinner();
+        /*String roleTitle = "QAdisable";
+            //"Amit";*/
+        createRolePage.clickOnRolesTab();
+        createRolePage.searchRole(roleTitle);
+        boolean roleStatusInGrid = createRolePage.getRoleStatusInRoleGrid(roleTitle);
+        createRolePage.goToRoleDetailsPageFromRoleGrid(roleTitle);
+        waitForloadSpinner();
+        Assert.assertEquals(roleStatusInGrid,createRolePage.getRoleStatusInRoleDetailsPage());
+    }
+
+    @DataProvider(name="roleTitles")
+    public Object[][] roleTitlesToValidate(){
+        return new Object[][]{
+                {"Amit"},
+                {"QAdisable"},
+                {"DemoSupervisor"},
+                {"Testingrole"},
+                {"QA_PE"},
+                {"Auditor"},
+                {"Regression Test"},
+                {"Test"},
+                {"bhagyaAuditor"},
+                {"AutoAdmin2820"}
+        };
+    }
 }
 
 

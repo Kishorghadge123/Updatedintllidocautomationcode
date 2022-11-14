@@ -28,11 +28,11 @@ public class ProjectModuleTest extends BaseTest {
         loginApplication();
     }
 
-//    @AfterMethod
-//    public void tearDown() {
-//        driver.quit();
-//
-//    }
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+
+    }
 
     @Severity(SeverityLevel.NORMAL)
     @Story("story_id: 001 - Search Created Project")
@@ -351,6 +351,42 @@ public class ProjectModuleTest extends BaseTest {
         int exepectedCountOfUserInTable = driver.findElements(By.xpath("//table/tbody/tr/td[1]")).size();
         String ActualCountOfUser = project.getUserCountOfatomperPage();
 //        Assert.assertEquals(exepectedCountOfUserInTable, Integer.parseInt(ActualCountOfUser));
+    }
+
+
+
+    @Story("story_id: 001 -verify role active status")
+    @Description("verify_role_active_status")
+    @Test(priority = 1, groups = "smoke", description = "verify_role_active_status", dataProvider ="projectNames")
+    public void verifyProjectActiveInactiveStatus(String projectTitle) throws Exception {
+        project = new Project_Module(driver);
+        waitForloadSpinner();
+        //waitForloadSpinner();
+        /*String projectTitle = "1163-Prada";
+        //"M-1168";*/
+        project.clickOnGridIcon();
+        project.searchProject(projectTitle);
+        boolean projectStatusInGrid = project.getProjectStatusInProjectGrid(projectTitle);
+        project.goToProjectDetailsPageFromProjectGrid(projectTitle);
+        waitForloadSpinner();
+        Assert.assertEquals(projectStatusInGrid,project.getProjectStatusInProjectDetailsPage());
+        project.clickOnCancelButton();
+    }
+
+    @DataProvider(name="projectNames")
+    public Object[][] projectNamesToValidate(){
+        return new Object[][]{
+                {"M-1168"},
+                {"1135-Struct"},
+                {"1163-Prada"},
+                {"Testing"},
+                {"R-25-Regression (return semi struct)"},
+                {"931-Medical-P Aft Deployment"},
+                {"958-Historical dataset"},
+                {"dev test structure"},
+                {"QA-AutoDisable2821jo"},
+                {"dfgh"}
+        };
     }
 
 }

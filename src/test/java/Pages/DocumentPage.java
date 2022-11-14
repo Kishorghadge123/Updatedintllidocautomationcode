@@ -30,6 +30,15 @@ public class DocumentPage {
     @FindBy(xpath = "//span[contains(text(),' QA-Automation Medical ')]")
     public WebElement selectproject;
 
+
+
+    @FindBy(xpath = "//span[contains(text(),' QA-Automation BRE ')]")
+    public WebElement structproject;
+
+
+    @FindBy(xpath = "//span[contains(text(),' 3.jpg ')]")
+    public WebElement structpdf;
+
     @FindBy(xpath = "(//div[@style=\"transform: translateY(10px);\"])[1]")
     public WebElement size;
 
@@ -328,6 +337,14 @@ public class DocumentPage {
         this.selectproject.click();
     }
 
+    public  void selectStructureProject(){
+        this.structproject.click();
+    }
+
+
+    public  void clickOnStructReadyDocument(){
+        this.structpdf.click();
+    }
     public void clickOnSize() {
         this.size.click();
     }

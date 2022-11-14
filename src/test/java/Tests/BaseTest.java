@@ -31,7 +31,6 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         ngWebDriver = new NgWebDriver((JavascriptExecutor) driver);
-        ngWebDriver.waitForAngularRequestsToFinish();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.get(testdata.getProperty("url"));

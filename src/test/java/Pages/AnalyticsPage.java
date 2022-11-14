@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
@@ -67,6 +68,7 @@ public class AnalyticsPage {
     public void verfiy_TotalPercentageCount_Of_Organization_Statistics() {
 
         List<WebElement> list = driver.findElements(By.cssSelector("tspan[class='ng-star-inserted']:nth-child(1)"));
+
         double i;
         double j = 0;
         for (WebElement s : list) {

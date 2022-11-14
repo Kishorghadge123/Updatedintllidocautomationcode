@@ -18,7 +18,7 @@ public class AuditPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//div[@class='mat-list-item-content']/img[contains(@src,'Audit')]")
+    @FindBy(xpath = "//img[contains(@src,'Audit')]")
     WebElement auditTab;
 
     @FindBy(xpath = "//span[contains(@class,'mat-tooltip-trigger projectname')]")

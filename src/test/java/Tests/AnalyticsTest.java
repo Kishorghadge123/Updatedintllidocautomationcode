@@ -80,8 +80,6 @@ public class AnalyticsTest extends BaseTest {
         AnalyticsPageObj.ClickAnalyticsBtn();
         waitForloadSpinner();
         AnalyticsPageObj.verfy_TotalCountofDocuments_in_Organization_Statistics();
-        AnalyticsPageObj=new AnalyticsPage(driver);
-        AnalyticsPageObj.verfiy_TotalPercentageCount_Of_Organization_Statistics();
     }
 
     @Severity(SeverityLevel.CRITICAL)

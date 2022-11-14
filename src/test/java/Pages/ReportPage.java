@@ -101,12 +101,12 @@ public class ReportPage {
         System.out.println(allDocs);
         int count = 0;
         for (int i = 1; i < allDocs.size(); i++) {
-            if (i == allDocs.size() - 2 || i == allDocs.size() - 3) {
-                continue;
-            } else {
+//            if (i == allDocs.size() - 2 || i == allDocs.size() - 3) {
+//                continue;
+//            } else {
                 count = count + Integer.parseInt(allDocs.get(i).getText());
             }
-        }
+
         Assert.assertEquals(allDocs.get(0).getText(), String.valueOf(count));
         System.out.println("expected:" + allDocs.get(0).getText());
         System.out.println("actual:" + String.valueOf(count));
@@ -143,7 +143,6 @@ public class ReportPage {
     public void ClickOnDropDownsInReportTab() {
         driver.findElement(By.xpath("(//mat-icon[contains(text(),' keyboard_arrow_down ')])[1]")).click();
     }
-
     public void selectProject() throws InterruptedException {
         this.selectProjectDropDown.click();
         Thread.sleep(2000);

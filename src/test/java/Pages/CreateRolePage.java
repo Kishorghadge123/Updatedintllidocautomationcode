@@ -1,11 +1,15 @@
 package Pages;
 
+import Utilities.Custome_Wait;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.Random;
@@ -26,6 +30,11 @@ public class CreateRolePage {
     public By RoleName = By.xpath("//input[@formcontrolname='role']");
     public By AddPermission = By.xpath("//span[contains(text(),' Add permission ')]");
     public By RoleOption = By.xpath("//button[contains(text(),' Role')]");
+    public By RoleOption1=By.xpath("//button[@role=\"menuitem\"][2]");
+    @FindBy(how= How.XPATH, using = "//div[@class='mat-list-item-content']/img[contains(@src,'Roles')]")
+    WebElement rolesTab;
+    @FindBy(xpath = "//input[@placeholder='Search']")
+    public WebElement searchButton;
     public By RoleSubOpn1 = By.xpath("//div[contains(text(),' View Role')]");
     public By RoleSubOpn2 = By.xpath("//div[contains(text(),' Update Role')]");
     public By update=By.xpath("//span[contains(text(),' Update ')]");
@@ -59,6 +68,9 @@ public WebElement SearchRole;
     @FindBy(xpath = "//mat-error[contains(text(),'Please enter at least 3 characters.')]")
     public WebElement roleNameLmt;
 
+
+    @FindBy(how= How.XPATH, using= "//mat-slide-toggle[@formcontrolname='status']//input")
+    public WebElement activeRoleToggleOnRoleDetails;
 
 
     @FindBy(xpath = "//span[contains(text(),'Roles')]")
@@ -152,6 +164,47 @@ public WebElement SearchRole;
     @Step("click On AddPermission Role Button")
     public void roleOption() {
         driver.findElement(RoleOption).click();
+    }
+
+
+    @Step("click On AddPermission document Button")
+    public void roleOption1() {
+        driver.findElement(RoleOption1).click();
+    }
+
+    public boolean getRoleStatusInRoleGrid(String RoleTitle){
+        String roleIconColor = driver.findElement(By.xpath("//span[text()=' "+RoleTitle+" ']/preceding-sibling::i")).getCssValue("color");
+        //.getAttribute("class");
+        System.out.println(Color.fromString(roleIconColor).asHex());
+        boolean isActive=false;
+
+        if(Color.fromString(roleIconColor).asHex().equalsIgnoreCase("#e87033"))
+            isActive = true;
+
+        return isActive;
+    }
+
+    public void clickOnRolesTab() throws Exception {
+        rolesTab.click();
+
+        //Thread.sleep(3000);
+    }
+
+    public void searchRole(String searchText) throws InterruptedException {
+        searchButton.sendKeys(searchText+ Keys.RETURN);
+        Thread.sleep(2000);
+    }
+
+    public void goToRoleDetailsPageFromRoleGrid(String RoleTitle){
+        driver.findElement(By.xpath("//span[text()=' "+RoleTitle+" ']/preceding-sibling::i")).click();
+    }
+
+    public boolean getRoleStatusInRoleDetailsPage(){
+        Custome_Wait c=new Custome_Wait(driver);
+        c.waitUpToelementClickable(driver, activeRoleToggleOnRoleDetails);
+        //System.out.println(activeRoleToggleOnProjectDetails.getAttribute("aria-checked"));
+        System.out.println(Boolean.valueOf(activeRoleToggleOnRoleDetails.getAttribute("aria-checked")));
+        return Boolean.valueOf(activeRoleToggleOnRoleDetails.getAttribute("aria-checked"));
     }
 
     @Step("click On AddPermission Sub-role Button")

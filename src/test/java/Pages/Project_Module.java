@@ -1,12 +1,16 @@
 package Pages;
 import java.util.List;
 import java.util.Random;
+
+import Utilities.Custome_Wait;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;;import javax.security.auth.x500.X500Principal;
 
 public class Project_Module {
@@ -255,6 +259,10 @@ public class Project_Module {
 
     @FindBy(xpath = "//span[contains(text(),' F ')]")
     public WebElement truebox1;
+
+
+    @FindBy(how= How.XPATH, using= "//mat-slide-toggle[@formcontrolname='status']//input")
+    public WebElement statusToggleOnProjectDetails;
 
     @FindBy(xpath = "//span[contains(text(),' + ')]")
     public WebElement rulebtn;
@@ -693,5 +701,35 @@ public class Project_Module {
         this.rulemsg.click();
     }
 
+    public boolean getProjectStatusInProjectGrid(String ProjectTitle){
+        String projectIconColor = driver.findElement(By.xpath("//span[text()=' "+ProjectTitle+" ']/preceding-sibling::i")).getCssValue("color");
+        //.getAttribute("class");
+        System.out.println(Color.fromString(projectIconColor).asHex());
+        boolean isActive=false;
 
+        if(Color.fromString(projectIconColor).asHex().equalsIgnoreCase("#e87033"))
+            isActive = true;
+
+        return isActive;
+    }
+    public void goToProjectDetailsPageFromProjectGrid(String ProjectTitle){
+        driver.findElement(By.xpath("//span[text()=' "+ProjectTitle+" ']/preceding-sibling::i")).click();
+    }
+
+    public boolean getProjectStatusInProjectDetailsPage(){
+
+        Custome_Wait c=new Custome_Wait(driver);
+        c.waitUpToelementClickable(driver, statusToggleOnProjectDetails);
+        //System.out.println(statusToggleOnProjectDetails.getAttribute("aria-checked"));
+        System.out.println(Boolean.valueOf(statusToggleOnProjectDetails.getAttribute("aria-checked")));
+        return Boolean.valueOf(statusToggleOnProjectDetails.getAttribute("aria-checked"));
+    }
+
+    public void clickOnGridIcon(){
+        listview.click();
+    }
+
+    public void searchProject(String str) throws Exception {
+        this.searchbar.sendKeys(str);
+    }
 }

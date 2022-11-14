@@ -1,4 +1,5 @@
 package Tests;
+
 import Pages.DocumentPage;
 import Utilities.Custome_Wait;
 import Utilities.Scroll_Page;
@@ -16,7 +17,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-public class DocumentTest extends BaseTest{
+
+public class DocumentTest extends BaseTest {
     DocumentPage docobj;
     SoftAssert softAssert;
     Custome_Wait custom;
@@ -24,16 +26,16 @@ public class DocumentTest extends BaseTest{
     Scroll_Page scrollPage;
 
     @BeforeMethod
-    public void setmethod() throws Exception {
-
+    public void setupmethod() throws Exception {
         setup();
         loginApplication();
     }
-//
+
     @AfterMethod
     public void tearDown() {
-  driver.quit();
+        driver.quit();
     }
+
     @Severity(SeverityLevel.NORMAL)
     @Story("story_id: 001 - verify_Data_Extracted_From_Document")
     @Description("verify_Data_Extracted_From_Document")
@@ -41,22 +43,22 @@ public class DocumentTest extends BaseTest{
     public void verify_Data_Extracted_From_Document() throws Exception {
         docobj = new DocumentPage(driver);
         softAssert = new SoftAssert();
-        custom=new Custome_Wait(driver);
+        custom = new Custome_Wait(driver);
         waitForloadSpinner();
         docobj.clickOnDocumentTab();
         waitForloadSpinner();
         docobj.clickOnDropdown();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
         docobj.selectProject();
         waitForloadSpinner();
         docobj.clickOnSize();
-       Thread.sleep(3000);
+        Thread.sleep(3000);
         docobj.clickOnReadyDocument();
         waitForloadSpinner();
         softAssert.assertTrue(docobj.readydocname.isDisplayed());
         softAssert.assertAll();
         docobj.clickOnChartData();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text() ,' Save Draft')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text() ,' Save Draft')]")));
         docobj.clickOnSaveDraftButton();
 
     }
@@ -68,12 +70,12 @@ public class DocumentTest extends BaseTest{
     public void Verify_Working_Of_Diagnosis_Without_Adding_Encounter_Details() throws Exception {
         docobj = new DocumentPage(driver);
         softAssert = new SoftAssert();
-        custom=new Custome_Wait(driver);
+        custom = new Custome_Wait(driver);
         waitForloadSpinner();
         docobj.clickOnDocumentTab();
         waitForloadSpinner();
         docobj.clickOnDropdown();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
         docobj.selectProject();
         waitForloadSpinner();
         docobj.clickOnReadyDocument();
@@ -81,11 +83,11 @@ public class DocumentTest extends BaseTest{
         softAssert.assertTrue(docobj.readydocname.isDisplayed());
         softAssert.assertAll();
         docobj.clickOnChartData();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//div[contains(text(),' Diagnosis ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//div[contains(text(),' Diagnosis ')]")));
         docobj.clickOnDiagnosisTab();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("(//mat-icon[contains(text(),' add')])[1]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("(//mat-icon[contains(text(),' add')])[1]")));
         docobj.clickOnAddDiagnosisTab();
-       Thread.sleep(3000);
+        Thread.sleep(3000);
         docobj.clickOnSave();
         Thread.sleep(2000);
         softAssert.assertTrue(docobj.npierromsg.isDisplayed());
@@ -102,22 +104,22 @@ public class DocumentTest extends BaseTest{
 
         docobj = new DocumentPage(driver);
         softAssert = new SoftAssert();
-        custom=new Custome_Wait(driver);
+        custom = new Custome_Wait(driver);
         waitForloadSpinner();
         docobj.clickOnDocumentTab();
         waitForloadSpinner();
         docobj.clickOnDropdown();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
         docobj.selectProject();
         waitForloadSpinner();
         docobj.clickOnReadyDocument();
-      waitForloadSpinner();
+        waitForloadSpinner();
         softAssert.assertTrue(docobj.readydocname.isDisplayed());
         softAssert.assertAll();
         docobj.clickOnChartData();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//div[contains(text(),' Diagnosis ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//div[contains(text(),' Diagnosis ')]")));
         docobj.clickOnDiagnosisTab();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("(//mat-icon[contains(text(),' add')])[1]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("(//mat-icon[contains(text(),' add')])[1]")));
         docobj.clickOnAddDiagnosisTab();
         Thread.sleep(3000);
         docobj.clickOnSave();
@@ -135,25 +137,23 @@ public class DocumentTest extends BaseTest{
     @Test(priority = 4, groups = "smoke", description = "Verify_Working_Of_Diagnosis_Adding_Encounter_Details")
     public void Edit_Encounter_Details() throws Exception {
         docobj = new DocumentPage(driver);
-        custom=new Custome_Wait(driver);
+        custom = new Custome_Wait(driver);
         softAssert = new SoftAssert();
         waitForloadSpinner();
         docobj.clickOnDocumentTab();
         waitForloadSpinner();
         docobj.clickOnDropdown();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
         docobj.selectProject();
-waitForloadSpinner();
+        waitForloadSpinner();
         docobj.clickOnReadyDocument();
         waitForloadSpinner();
         softAssert.assertTrue(docobj.readydocname.isDisplayed());
         softAssert.assertAll();
         docobj.clickOnChartData();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//div[contains(text(),' Diagnosis ')]")));
-
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//div[contains(text(),' Diagnosis ')]")));
         docobj.clickOnDiagnosisTab();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("(//mat-icon[contains(text(),' add')])[1]")));
-
+        custom.waitVisibility(driver, driver.findElement(By.xpath("(//mat-icon[contains(text(),' add')])[1]")));
         docobj.clickOnAddDiagnosisTab();
         Thread.sleep(3000);
         docobj.clickOnSave();
@@ -176,24 +176,24 @@ waitForloadSpinner();
 
         docobj = new DocumentPage(driver);
         softAssert = new SoftAssert();
-        custom=new Custome_Wait(driver);
+        custom = new Custome_Wait(driver);
         waitForloadSpinner();
         docobj.clickOnDocumentTab();
         waitForloadSpinner();
         docobj.clickOnDropdown();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
         docobj.selectProject();
-       waitForloadSpinner();
+        waitForloadSpinner();
         docobj.clickOnReadyDocument();
         waitForloadSpinner();
         softAssert.assertTrue(docobj.readydocname.isDisplayed());
         softAssert.assertAll();
         docobj.clickOnChartData();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//div[contains(text(),' Diagnosis ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//div[contains(text(),' Diagnosis ')]")));
         docobj.clickOnDiagnosisTab();
         Thread.sleep(3000);
         docobj.clickOnAddDiagnosisName();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("(//mat-icon[contains(text(),' add')])[2]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("(//mat-icon[contains(text(),' add')])[2]")));
         docobj.clickOnAddHccPlusBtn();
         Thread.sleep(1000);
         docobj.clickOnHCCSaveBtn();
@@ -210,10 +210,10 @@ waitForloadSpinner();
         softAssert = new SoftAssert();
         waitForloadSpinner();
         docobj.clickOnDocumentTab();
-        custom=new Custome_Wait(driver);
+        custom = new Custome_Wait(driver);
         waitForloadSpinner();
         docobj.clickOnDropdown();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
         docobj.selectProject();
         waitForloadSpinner();
         docobj.clickOnReadyDocument();
@@ -221,18 +221,17 @@ waitForloadSpinner();
         softAssert.assertTrue(docobj.readydocname.isDisplayed());
         softAssert.assertAll();
         docobj.clickOnChartData();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//div[contains(text(),' Diagnosis ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//div[contains(text(),' Diagnosis ')]")));
         docobj.clickOnDiagnosisTab();
         Thread.sleep(2000);
         docobj.clickOnAddDiagnosisName();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("(//mat-icon[contains(text(),' add')])[2]")));
-
+        custom.waitVisibility(driver, driver.findElement(By.xpath("(//mat-icon[contains(text(),' add')])[2]")));
         docobj.clickOnAddHccPlusBtn();
         Thread.sleep(1000);
         docobj.enterPageNumber("1");
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),'Add Comment')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),'Add Comment')]")));
         docobj.selectHccDropdown();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' No valid records found ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' No valid records found ')]")));
         docobj.selectComments();
         docobj.clickOnHCCSaveBtn();
 
@@ -247,13 +246,12 @@ waitForloadSpinner();
 
         docobj = new DocumentPage(driver);
         softAssert = new SoftAssert();
-        custom=new Custome_Wait(driver);
+        custom = new Custome_Wait(driver);
         waitForloadSpinner();
         docobj.clickOnDocumentTab();
         waitForloadSpinner();
         docobj.clickOnDropdown();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
-
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
         docobj.selectProject();
         waitForloadSpinner();
         docobj.clickOnReadyDocument();
@@ -263,23 +261,21 @@ waitForloadSpinner();
         docobj.clickOnDiagnosisTab();
         Thread.sleep(2000);
         docobj.clickOnAddDiagnosisName();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("(//mat-icon[contains(text(),' add')])[2]")));
-
+        custom.waitVisibility(driver, driver.findElement(By.xpath("(//mat-icon[contains(text(),' add')])[2]")));
         docobj.clickOnAddHccPlusBtn();
-       custom.waitVisibility(driver,driver.findElement(By.xpath("//input[@name=\"Diagnosis\"]")));
-       docobj.eneterDiasesname("CUFF");
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//input[contains(@class,'mat-autocomplete-trigger mat-chip-input mat-input-element')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//input[@name=\"Diagnosis\"]")));
+        docobj.eneterDiasesname("CUFF");
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//input[contains(@class,'mat-autocomplete-trigger mat-chip-input mat-input-element')]")));
         docobj.enterPageNumber("1");
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),'Add Comment')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),'Add Comment')]")));
         docobj.selectHccDropdown();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' No valid records found ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' No valid records found ')]")));
         docobj.selectComments();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),'Add ICD')]")));
-
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),'Add ICD')]")));
         docobj.clickOnAddIcdBtn();
         Thread.sleep(2000);
-             docobj.enterIcdNo("e11");
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(), 'Type 2 diabetes mellitus with hyperosmolarity with coma')]")));
+        docobj.enterIcdNo("e11");
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(), 'Type 2 diabetes mellitus with hyperosmolarity with coma')]")));
         docobj.selectDescriptionType();
         Thread.sleep(1000);
         docobj.clickOnHCCSaveBtn();
@@ -295,14 +291,14 @@ waitForloadSpinner();
 
         docobj = new DocumentPage(driver);
         softAssert = new SoftAssert();
-        custom=new Custome_Wait(driver);
+        custom = new Custome_Wait(driver);
         waitForloadSpinner();
         docobj.clickOnDocumentTab();
         waitForloadSpinner();
         docobj.clickOnDropdown();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
         docobj.selectProject();
-       waitForloadSpinner();
+        waitForloadSpinner();
         docobj.clickOnReadyDocument();
         waitForloadSpinner();
         softAssert.assertTrue(docobj.readydocname.isDisplayed());
@@ -312,51 +308,49 @@ waitForloadSpinner();
         docobj.clickOnDiagnosisTab();
         Thread.sleep(2000);
         docobj.clickOnAddDiagnosisName();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("(//mat-icon[contains(text(),' add')])[2]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("(//mat-icon[contains(text(),' add')])[2]")));
 
         docobj.clickOnAddHccPlusBtn();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//input[@name=\"Diagnosis\"]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//input[@name=\"Diagnosis\"]")));
         docobj.eneterDiasesname("CUFF");
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//input[contains(@class,'mat-autocomplete-trigger mat-chip-input mat-input-element')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//input[contains(@class,'mat-autocomplete-trigger mat-chip-input mat-input-element')]")));
         docobj.enterPageNumber("1");
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),'Add Comment')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),'Add Comment')]")));
         docobj.selectHccDropdown();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' No valid records found ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' No valid records found ')]")));
         docobj.selectComments();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),'Add ICD')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),'Add ICD')]")));
 
         docobj.clickOnAddIcdBtn();
         Thread.sleep(2000);
         docobj.enterIcdNo("e11");
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(), 'Type 2 diabetes mellitus with hyperosmolarity with coma')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(), 'Type 2 diabetes mellitus with hyperosmolarity with coma')]")));
         docobj.selectDescriptionType();
         Thread.sleep(2000);
         docobj.clickOnHCCSaveBtn();
-    Thread.sleep(3000);
+        Thread.sleep(3000);
         docobj.deleteDiagnosis();
         Thread.sleep(1000);
 
     }
 
 
-
-
     @Severity(SeverityLevel.NORMAL)
     @Story("story_id: 09  - verify that user able to Check Document ")
     @Description("verify_that_user_able_to_Check_Document")
-    @Test(priority =9, groups = "smoke", description = "verify_that_user_able_to_Check_Document")
+    @Test(priority = 9, groups = "smoke", description = "verify_that_user_able_to_Check_Document")
     public void verifyDocumentOnUserPage() throws Exception {
         docobj = new DocumentPage(driver);
         softAssert = new SoftAssert();
-        custom=new Custome_Wait(driver);
+        custom = new Custome_Wait(driver);
         docobj = new DocumentPage(driver);
         waitForloadSpinner();
         docobj.clickOnDocumentPage();
         waitForloadSpinner();
         docobj.clickOnSearchDropdown();
-       custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' QA-Automation BRE ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' QA-Automation BRE ')]")));
         docobj.clickonsearchProjectName();
-         waitForloadSpinner();
+        waitForloadSpinner();
         docobj.clickOnKeyboardArrayDown();
         softAssert.assertTrue(docobj.validateFilter.isDisplayed());
         softAssert.assertTrue(docobj.validateDocumnetName.isDisplayed());
@@ -369,7 +363,8 @@ waitForloadSpinner();
         Thread.sleep(1000);
         docobj.clickOnStatusDropDown();
         docobj.clickOnReadyCheckBox();
-        docobj.clickOnRejectedCheckBox();;
+        docobj.clickOnRejectedCheckBox();
+        ;
         docobj.clickOutside();
         Thread.sleep(1000);
         docobj.clickOnApplyButton();
@@ -416,15 +411,15 @@ waitForloadSpinner();
     public void Edit_Diagnosis_Details() throws Exception {
 
         docobj = new DocumentPage(driver);
-        custom=new Custome_Wait(driver);
+        custom = new Custome_Wait(driver);
         softAssert = new SoftAssert();
         waitForloadSpinner();
         docobj.clickOnDocumentTab();
         waitForloadSpinner();
         docobj.clickOnDropdown();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
         docobj.selectProject();
-      waitForloadSpinner();
+        waitForloadSpinner();
         docobj.clickOnReadyDocument();
         waitForloadSpinner();
         softAssert.assertTrue(docobj.readydocname.isDisplayed());
@@ -432,7 +427,7 @@ waitForloadSpinner();
         docobj.clickOnChartData();
         Thread.sleep(1000);
         docobj.clickOnDiagnosisTab();
-       Thread.sleep(2000);
+        Thread.sleep(2000);
         docobj.clickOnAddDiagnosisName();
         Thread.sleep(2000);
         docobj.clickOnAddHccPlusBtn();
@@ -440,6 +435,7 @@ waitForloadSpinner();
         docobj.clickOnHCCSaveBtn();
 
     }
+
     @Severity(SeverityLevel.NORMAL)
     @Story("story_id: 012 - verifyActionButtonWorking")
     @Description("verifyActionButtonWorking")
@@ -448,25 +444,21 @@ waitForloadSpinner();
 
         docobj = new DocumentPage(driver);
         softAssert = new SoftAssert();
-        custom=new Custome_Wait(driver);
+        custom = new Custome_Wait(driver);
         waitForloadSpinner();
         docobj.clickOnDocumentTab();
         waitForloadSpinner();
         docobj.clickOnDropdown();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' QA-Automation Medical ')]")));
         docobj.selectProject();
-  waitForloadSpinner();
+        waitForloadSpinner();
         docobj.clickOnActionButton();
         waitForloadSpinner();
-        String url=driver.getCurrentUrl();
+        String url = driver.getCurrentUrl();
         System.out.println(url);
-        softAssert.assertEquals(url,"https://alpha.neutrino-ai.com/#/home/documents/processed-forms?faxPageId=6331536c22fa465b7feb999b&imageName=MedicalReady.pdf&type=pdf&size=1-Pages&invalidFileFormat=false&corruptedFile=false&_st=Ready&navigationLink=.%2Fhome%2Fdocuments");
+        softAssert.assertEquals(url, "https://alpha.neutrino-ai.com/#/home/documents/processed-forms?faxPageId=6331536c22fa465b7feb999b&imageName=MedicalReady.pdf&type=pdf&size=1-Pages&invalidFileFormat=false&corruptedFile=false&_st=Ready&navigationLink=.%2Fhome%2Fdocuments");
         softAssert.assertAll();
     }
-
-
-
-
 
 
     @Severity(SeverityLevel.NORMAL)
@@ -479,7 +471,7 @@ waitForloadSpinner();
         docobj = new DocumentPage(driver);
         waitForloadSpinner();
         docobj.clickOnDocumentPage();
-     waitForloadSpinner();
+        waitForloadSpinner();
         docobj.clickOnSearchDropdown();
         Thread.sleep(2000);
         docobj.clickonsearchProjectName();
@@ -509,9 +501,6 @@ waitForloadSpinner();
     }
 
 
-
-
-
     @Severity(SeverityLevel.CRITICAL)
     @Story("story_id: 014 -All DropDown Arrow In Table")
     @Description("verify_all_dropDown_arrow_in_table")
@@ -522,7 +511,7 @@ waitForloadSpinner();
         sortingLists = new SortingLists(driver);
         waitForloadSpinner();
         docobj.clickOnDocumentTab();
-         waitForloadSpinner();
+        waitForloadSpinner();
 //        auditPage.clickonGridIcon();
 //        Thread.sleep(2000);
         docobj.clickOnTableArrowDropDown(" Documents ");
@@ -568,7 +557,7 @@ waitForloadSpinner();
     @Test(priority = 15, groups = "smoke", description = "verify_the_total_Count_Of_user_in_UserTab")
     public void verifyTheTotalCountOfUserinUserTab() throws Exception {
         scrollPage = new Scroll_Page(driver);
-        softAssert=new SoftAssert();
+        softAssert = new SoftAssert();
         docobj = new DocumentPage(driver);
         sortingLists = new SortingLists(driver);
         waitForloadSpinner();

@@ -26,10 +26,10 @@ public class DataSetTest extends BaseTest {
         loginApplication();
     }
 
-//    @AfterMethod
-//    public void tearDown() {
-//      driver.quit();
-//    }
+    @AfterMethod
+    public void tearDown() {
+      driver.quit();
+    }
 
     @Severity(SeverityLevel.NORMAL)
     @Story("story_id: 001  - verify that user is able to Check search Datasets on user page ")
