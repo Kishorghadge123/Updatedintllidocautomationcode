@@ -44,7 +44,7 @@ public class BaseTest {
     }
     public void waitForloadSpinner() throws Exception {
         try {
-            wait = new WebDriverWait(driver, 5000L);
+            wait = new WebDriverWait(driver, 11L);
             wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//span[text()='Please wait...'] ")))); // wait for loader to
             wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//span[text()='Please wait...'] ")))); // wait for loader to disappear
         } catch (Exception e) {

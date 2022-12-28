@@ -6,12 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import java.io.File;
 import java.util.List;
 
 public class ReportPage {
     WebDriver driver;
+     SoftAssert softassert ;
 
     public ReportPage(WebDriver driver) {
         this.driver = driver;
@@ -47,8 +49,30 @@ public class ReportPage {
     @FindBy(xpath = "(//mat-option[contains(@class,'mat-option mat-focus-indicator mat-option-multiple mat-active')])[1]")
     WebElement clickInCheckBoxOnAssignee;
 
+
+    @FindBy(xpath = "(//span[contains(text(),'Audited')])[2]")
+    WebElement adropdown;
+
+    @FindBy(xpath = "(//span[contains(text(),' Pending ')])[2]")
+    WebElement auditor;
+
     @FindBy(xpath = "//span[contains(text(),'Clear')]")
     WebElement clearButton;
+
+
+
+    @FindBy(xpath = "(//*[local-name()='text'])[1]")
+    public WebElement totalpercentage;
+
+    @FindBy(xpath = "(//*[local-name()='text'])[2]")
+    public  WebElement readypercentage;
+
+    @FindBy(xpath = "(//*[local-name()='text'])[3]")
+    public WebElement processedpercentage;
+
+    @FindBy(xpath = "(//*[local-name()='text'])[4]")
+    public WebElement rejectedpercentage;
+
 
     //span[contains(text(),'Clear')]
     public void clickOnReportTab() {
@@ -83,13 +107,24 @@ public class ReportPage {
         this.countDropDown.click();
     }
 
+    public void getTotalPercentage() throws Exception{
+        softassert=new SoftAssert();
+        softassert.assertEquals(Integer.parseInt((totalpercentage).getText().split("%")[0]),Double.parseDouble((readypercentage).getText().split("%")[0]+Double.parseDouble((processedpercentage).getText().split("%")[0]+Double.parseDouble((rejectedpercentage).getText().split("%")[0]))));
+        softassert.assertAll();
+
+    }
+//
+//    public int verifyTotalPercentage(){
+//
+//    }
+
 
     public void clickOnProjectDropdown() {
         this.projectDrowpdown.click();
     }
 
-    public void selectProjectFromDropDown(int index) {
-        driver.findElement(By.xpath("(//button[@role=\"menuitem\"]/span)[" + index + "]")).click();
+    public void selectProjectFromDropDown() {
+        driver.findElement(By.xpath("(//span[contains(text(),' 10 Oct - Dataset Creation ')])[2]")).click();
     }
 
     public int getAllProjectsFromDropDown() {
@@ -118,7 +153,7 @@ public class ReportPage {
     }
 
     public boolean isFileDownloaded(String fileName) {
-        File dir = new File("C:\\Users\\bagal\\Downloads");
+        File dir = new File("C:\\Users\\kishor_ghadge");
         System.out.println(dir);
         File[] dir_contents = dir.listFiles();
         if (dir_contents != null) {
@@ -131,7 +166,7 @@ public class ReportPage {
     }
 
     public void deleteReportFile(String fileName) {
-        File dir = new File("C:\\Users\\bagal\\Downloads");
+        File dir = new File("C:\\Users\\kishor_ghadge");
         File[] dir_contents = dir.listFiles();
         if (dir_contents != null)
             for (File dir_content : dir_contents) {
@@ -149,6 +184,16 @@ public class ReportPage {
         this.searchProject.clear();
         this.searchProject.sendKeys("888-Medical");
         this.clickOnproject.click();
+    }
+
+
+
+    public String getCreatedDateOfSearchedUserInGridView() {
+        return driver.findElement(By.cssSelector("td.mat-column-updated")).getText();//.split(" ")[1];
+    }
+
+    public String getUpdatedDateOfSearchedUserInGridView() {
+        return driver.findElement(By.cssSelector("td.mat-column-received")).getText();//.split(" ")[1];
     }
 
     public void clickOnStatusDropDown() throws InterruptedException {
@@ -183,6 +228,12 @@ public class ReportPage {
     }
     public void verifySortsortingofTableData(int index) {
         driver.findElement(By.xpath("(//table/thead/tr/th)[" + index + "]")).click();
+    }
+    public void clickOnAuditorDropdown(){
+        this.adropdown.click();
+    }
+    public void selectAuditor(){
+        this.auditor.click();
     }
 
 

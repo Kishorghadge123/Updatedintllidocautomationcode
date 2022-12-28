@@ -30,10 +30,10 @@ public class AuditPage {
     @FindBy(xpath = "(//div[contains(@class,'mat-tooltip-trigger ng-star-inserted')]//button[contains(@role,'menuitem')])[1]")
     WebElement clickOnproject;
 
-    @FindBy(xpath = "//span[contains(text(),' Pending ')]")
+    @FindBy(xpath = "(//span[contains(text(),' Pending ')])[2]")
     WebElement selectStatusPending;
 
-    @FindBy(xpath = "//span[contains(text(),' Audited ')]")
+    @FindBy(xpath = "(//span[contains(text(),' Audited ')])[2]")
     WebElement selectStatusAudited;
 
     @FindBy(xpath = "(//div[contains(@class,'mat-form-field-infix ng-tns-c')]//div[contains(@class,'mat-select-arrow-wrapper ng-tns-c')])[2]")
@@ -122,6 +122,7 @@ public class AuditPage {
         Thread.sleep(2000);
         this.searchProject.clear();
         this.searchProject.sendKeys("888-Medical");
+        Thread.sleep(1000);
         this.clickOnproject.click();
     }
     public void verifySortsortingofTableData(int index) {

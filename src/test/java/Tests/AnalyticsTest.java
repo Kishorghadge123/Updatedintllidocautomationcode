@@ -41,7 +41,7 @@ public class AnalyticsTest extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 001 - Test organization arrows on analytics page")
+    @Story("story_id: A001 - Test organization arrows on analytics page")
     @Description("verify user able to click organization arrows on analytics page")
     @Test(priority = 1, groups = "smoke", description = "verify test organization arrows on analytics page")
     public void test_organization_arrows_on_analytics_page_and_Doc() throws Exception {
@@ -70,7 +70,7 @@ public class AnalyticsTest extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 002 - verify Total Document Count")
+    @Story("story_id: A002 - verify Total Document Count")
     @Description(" verify_Total_Document_Count")
     @Test(priority = 2, groups = "smoke", description = "verify_Total_Document_Count")
     public void verify_Total_Document_Count() throws Exception {
@@ -83,7 +83,7 @@ public class AnalyticsTest extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 003 - verify Total Document Count in project statistics")
+    @Story("story_id: A003 - verify Total Document Count in project statistics")
     @Description(" verify_Total_Document_Countin_project_statistics")
     @Test(priority = 3, groups = "smoke", description = "verify_Total_Document_Count_in_project_statistics")
     public void verify_Total_Document_CountInProjectStatistics() throws Exception {
@@ -100,7 +100,7 @@ public class AnalyticsTest extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 004 - verify that user able To see trends According To Selections")
+    @Story("story_id: A004 - verify that user able To see trends According To Selections")
     @Description(" verify_that_user_able_to_see_trends_according_to_selections")
     @Test(priority = 4, groups = "smoke", description = "verify_that_user_able_to_see_trends_according_to_selections")
     public void verifyThatuserableToseetrendsAccordingToSelections() throws Exception {
@@ -131,7 +131,7 @@ public class AnalyticsTest extends BaseTest {
 
     }
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 005 - verify total count of ready to proccess document is equal to total count of document in table")
+    @Story("story_id: A005 - verify total count of ready to proccess document is equal to total count of document in table")
     @Description(" verify_total_count_of_ready_to_proccess_document_is_equal_to_total_count_of_document_in_table")
     @Test(priority = 5, groups = "smoke", description = "verify_total_count_of_ready_to_proccess_document_is_equal_to_total_count_of_document_in_table")
     public void verifyTotalcountOfreadyToProccessDocisequalToTotalcountofDocinTable() throws Exception {
@@ -160,9 +160,10 @@ public class AnalyticsTest extends BaseTest {
 
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 006 - verify That user click On NTS platform admin button and admin popup is display")
+    @Story("story_id: A006 - verify That user click On NTS platform admin button and admin popup is display")
     @Description(" verify_that_user_click_on_NTS_platform_admin_button_and_admin_popup_is_display")
     @Test(priority = 6, groups = "smoke", description = "verify_that_user_click_on_NTS_platform_admin_button_and_admin_popup_is_display")
+
     public void verifyThatuserClickOnNtsplatformAdminbuttonandAdminPopupisDispaly() throws Exception {
         AnalyticsPageObj = new AnalyticsPage(driver);
         softAssert = new SoftAssert();
@@ -179,7 +180,7 @@ public class AnalyticsTest extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 007 - verify that user validate the count of total user in analytics page")
+    @Story("story_id: A007 - verify that user validate the count of total user in analytics page")
     @Description(" verify_that_user_validate_the_count_of_total_user_in_analytics_page")
     @Test(priority = 7, groups = "smoke", description = "verify_that_user_validate_the_count_of_total_user_in_analytics_page")
     public void validateTheCountOfTotalUserInAnalyticsPage() throws Exception {
@@ -203,10 +204,11 @@ public class AnalyticsTest extends BaseTest {
         Assert.assertEquals(actualcount, expectedCount);
     }
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 008 - Verify That user click Drop Down on Analytics Page")
+    @Story("story_id: A008 - Verify That user click Drop Down on Analytics Page")
     @Description(" Verify_that_user_click_Drop_Down_Of_Analytics_Page")
     @Test(priority = 8, groups = "smoke", description = "Verify_that_user_click_Drop_Down_Of_Analytics_Page")
     public void verifyDropDownOfAnalyticsPage() throws Exception {
+
         AnalyticsPageObj = new AnalyticsPage(driver);
         softAssert = new SoftAssert();
         custom=new Custome_Wait(driver);
@@ -221,4 +223,28 @@ public class AnalyticsTest extends BaseTest {
         Assert.assertTrue(driver.findElement(By.xpath("(//div[contains(@class,'white_bg rounded_5px box_shadow py-3 h-100 d-flex-center flex-column')])[1]")).isDisplayed());
 
     }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("story_id: A009 - verify Project Statics Options")
+    @Description("verify Project Statics Options")
+    @Test(priority = 9, groups = "smoke", description = "verify Project Statics Options")
+    public void verifyProjectStaticsOptions() throws Exception {
+
+        AnalyticsPageObj = new AnalyticsPage(driver);
+        softAssert = new SoftAssert();
+        custom=new Custome_Wait(driver);
+        waitForloadSpinner();
+        AnalyticsPageObj.ClickAnalyticsBtn();
+        waitForloadSpinner();
+        softAssert.assertEquals(driver.findElement(By.xpath("(//div[contains(@class,\"bold font\")])[1]")).getText(),"Users");
+        softAssert.assertEquals(driver.findElement(By.xpath("(//div[contains(@class,\"bold font\")])[3]")).getText(),"Documents");
+        softAssert.assertEquals(driver.findElement(By.xpath("(//div[contains(@class,\"bold font\")])[5]")).getText(),"Processed");
+        softAssert.assertEquals(driver.findElement(By.xpath("(//div[contains(@class,\"bold font\")])[7]")).getText(),"Ready to Process");
+        softAssert.assertEquals(driver.findElement(By.xpath("(//div[contains(@class,\"bold font\")])[9]")).getText(),"Rejected");
+        softAssert.assertEquals(driver.findElement(By.xpath("(//div[contains(@class,\"bold font\")])[11]")).getText(),"Validation Time");
+        softAssert.assertAll();
+
+    }
+
+
 }

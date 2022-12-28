@@ -5,6 +5,7 @@ import java.util.Random;
 import Utilities.Custome_Wait;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -25,6 +26,9 @@ public class Project_Module {
 
     @FindBy(xpath = "//input[@placeholder='Search']")
     WebElement searchbar;
+
+    @FindBy(xpath = "//mat-icon[contains(text(),' grid_on')]")
+    WebElement gridview;
 
     @FindBy(xpath = "")
     public WebElement searchedproject;
@@ -102,6 +106,22 @@ public class Project_Module {
     @FindBy(xpath = "//span[contains(text(),' Structured ')]")
     public WebElement selectpeoject;
 
+    @FindBy(xpath = "//span[contains(text(),'Entity')]")
+    public WebElement entitylabel;
+
+    @FindBy(xpath = "(//span[contains(text(),' Add Entity ')])[1]")
+    public WebElement addentity;
+
+    @FindBy(xpath = "//button[contains(text(),' PatientDemographics')]")
+    public  WebElement firstoption;
+
+
+    @FindBy(xpath = "//button[contains(text(),' HCCConditions')]")
+    public WebElement secondoption;
+
+    @FindBy(xpath = "//span[contains(text(),' Medical Chart ')]")
+    public WebElement mproject;
+
     @FindBy(xpath = "//input[@placeholder=\"Search\"]")
     public WebElement searchpreviouslead;
 
@@ -131,6 +151,9 @@ public class Project_Module {
 
     @FindBy(xpath = "//mat-icon[contains(text(),'create')]")
     public WebElement searchedproject1;
+
+    @FindBy(xpath = "//mat-icon[contains(text(),'create')]")
+    public  WebElement searchedproject2;
 
 
     @FindBy(xpath = "//span[contains(text(),' Add Fields ')]")
@@ -346,6 +369,26 @@ public class Project_Module {
 
     @FindBy(xpath = "//button[@aria-label='Next page']")
     public WebElement nextPagetab;
+
+
+
+    @FindBy(xpath = "//button[contains(text(),' Analytics ')]")
+    public WebElement analyticpermisson;
+    public void analyticBtn() {
+        this.analyticpermisson.click();
+    }
+    @FindBy(xpath = "(//mat-icon[contains(text(),'add_circle_outline')])[4]")
+    public WebElement addUSerInRole;
+    public void clickOnaddUSerInRole(){
+        this.addUSerInRole.click();
+    }
+
+    @FindBy(xpath = "//div[contains(text(),' View Analytics ')]")
+    public WebElement viewAnalyticOpn;
+    public void clickOnViewAnalyticOpn() {
+        this.viewAnalyticOpn.click();
+    }
+
     public void userClickOnNextpageTab() {
         boolean value1 = this.nextPagetab.isDisplayed();
         System.out.println(value1);
@@ -356,6 +399,8 @@ public class Project_Module {
             }
         }
     }
+
+    public  void getdocumentlist(){}
     public String getUserCountOfatomperPage() {
         return driver.findElement(By.xpath("//div[@class=\"mat-paginator-range-label\"]")).getText().split("of")[1].strip();
     }
@@ -399,9 +444,17 @@ public class Project_Module {
         this.searchedproject1.click();
     }
 
+    public void searchCreatedProjectOnGridView(String str) throws InterruptedException {
+        this.gridview.click();
+        this.searchbar.sendKeys(str);
+        Thread.sleep(1000);
+        this.searchedproject2.click();
+
+    }
+
     public void searchUpdatedproject(String str) throws Exception {
         this.searchbar.sendKeys(str);
-        this.searchedproject.click();
+
 
     }
 
@@ -663,6 +716,28 @@ public class Project_Module {
     }
     public void selectProjectType(){
         this.selectpeoject.click();
+    }
+
+    public void selectMedicalProjectType(){
+        this.mproject.click();
+    }
+
+
+    public  void selectEntityLabel(){
+        this.entitylabel.click();
+    }
+
+    public  void clickOnAddEntity(){
+        this.addentity.click();
+    }
+
+    public  void selectFirstOption(){
+        this.firstoption.click();
+    }
+
+
+    public  void selectSecondOption(){
+        this.secondoption.click();
     }
     public  void clickOnAddRoleButton(){
         this.addrole.click();

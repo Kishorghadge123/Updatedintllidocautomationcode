@@ -80,6 +80,10 @@ public class TemplatePage {
     public WebElement update;
 
 
+    @FindBy(xpath = "//span[contains(text(),'Cancel Update')]")
+    public WebElement cancelUpdate;
+
+
 
     @FindBy(xpath = "//span[contains(text(),' Cancel ')]")
     public WebElement cancelbutton;
@@ -176,6 +180,11 @@ public class TemplatePage {
 
     public  void clickOnUpdateButtonOfMandtoryField(){
         this.update.click();
+    }
+
+
+    public  void clickOnCancelUpdate(){
+        this.cancelUpdate.click();
     }
 
     public int getCountOfMappings(){

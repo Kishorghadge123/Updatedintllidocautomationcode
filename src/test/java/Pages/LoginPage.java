@@ -41,6 +41,10 @@ public class LoginPage {
     @FindBy(xpath = "//span[contains(text(),'Submit')]")
     public WebElement Submit;
 
+
+    @FindBy(xpath = "//i[@class='fa fa-power-off']")
+    public WebElement logout;
+
     @Step("EnterUsername")
     public void EnterUsername(String text) throws Exception {
         this.userName.sendKeys(text);
@@ -84,14 +88,7 @@ public class LoginPage {
 
     @Step("ClickLogoutBtn")
     public void ClickLogoutBtn() throws Exception {
-        try {
-            wait = new WebDriverWait(driver, 5000L);
-            wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//span[text()='Please wait...'] ")))); // wait for loader to
-            wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//span[text()='Please wait...'] ")))); // wait for loader to disappear
-            this.Logout.click();
-        }catch (Exception e){
-            System.out.println("Spinar Not Appear");
-        }
+        this.logout.click();
     }
 }
 

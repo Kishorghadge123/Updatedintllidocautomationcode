@@ -5,9 +5,11 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import org.bson.codecs.SymbolCodec;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -15,12 +17,14 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import static org.testng.Assert.assertEquals;
 
 public class LoginTest extends BaseTest {
     LoginPage loginPage;
     WebDriverWait wait;
+    SoftAssert softAssert;
 
     @BeforeMethod
     public void setmethod() throws Exception {
@@ -32,7 +36,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 001  - verification of test log in functinality")
+    @Story("story_id: L001  - verification of test log in functinality")
     @Description("verification_test_log_in_functinality")
     @Test(priority = 1, groups = "smoke", description = "test_login_functinality", dataProvider = "LoginDataProvider")
     public void testloginfunctinality(String scenario, String username, String pwd) throws Exception {
@@ -182,7 +186,7 @@ public class LoginTest extends BaseTest {
         };
     }
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 002  - verification of title logo and login with blank details")
+    @Story("story_id: L002  - verification of title logo and login with blank details")
     @Description("verification_of_title_logo_and_login_with_blank_details")
     @Test(priority = 2, groups = "smoke", description = "verification_of_title_logo_and_login_with_blank_details")
     public void verification_of_title_ofLoginPage() throws Exception {
@@ -191,7 +195,7 @@ public class LoginTest extends BaseTest {
         assertEquals(expectedTitle, actualTitle, "TitleMismatched");
     }
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 003  - verify that the user is able to Log off the application")
+    @Story("story_id: L003  - verify that the user is able to Log off the application")
     @Description("verify_that_the_user_is_able_to_Log_off_the_application")
     @Test(priority = 3, groups = "smoke", description = "verify_that_the_user_is_able_to_Log_off_the_application")
     public void verification_TheLogOfApplication() throws Exception {
@@ -205,7 +209,7 @@ public class LoginTest extends BaseTest {
         }
     }
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 004 - verify click on cancel button on forgot password")
+    @Story("story_id: For004 - verify click on cancel button on forgot password")
     @Description("verify user able to click_on_cancel_button_on_forgot_password")
     @Test(priority = 4, groups = "smoke", description = "verify click_on_cancel_button_on_forgot_password")
     public void VerifyForgotPasswerdButtonAndFunctionality() throws Exception {
@@ -224,7 +228,7 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(ActualText, "User does not exist");
     }
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 005 - verify forgot password  email textfield functinality")
+    @Story("story_id: For005 - verify forgot password  email textfield functinality")
     @Description("verify forgot password  email textfield functinality")
     @Test(priority = 5, groups = "smoke", description = "verify forgot password  email textfield functinality")
     public void verify_forgot_password_email_textfield_functinality() throws Exception {
@@ -235,7 +239,7 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),' *Please Check Email Id ')]")).getText(),"*Please Check Email Id");
     }
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 006 - verify_forgot_password_Functinality_When_User_Is_Disable")
+    @Story("story_id: For006 - verify_forgot_password_Functinality_When_User_Is_Disable")
     @Description("verify_forgot_password_Functinality_When_User_Is_Disable")
     @Test(priority = 6, groups = "smoke", description = "verify_forgot_password_Functinality_When_User_Is_Disable")
     public void verify_forgot_password_Functinality_When_User_Is_Disable() throws Exception {
@@ -244,6 +248,43 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(driver.findElement(By.xpath("//div[@class='card forgot-form']")).isDisplayed());
         loginPage.enterEmail("bhagyashri.kalaskar@neutrinotechlabs.com");
         loginPage.clickonsubmitbtn();
+        Thread.sleep(1000);
         Assert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'User is inactive. Please contact Administration')]")).getText(),"User is inactive. Please contact Administration");
+    }
+
+
+    @Severity(SeverityLevel.NORMAL)
+    @Story("story_id: For007 - verify click on cancel button on forgot password")
+    @Description("verify user able to click_on_cancel_button_on_forgot_password")
+    @Test(priority = 7, groups = "smoke", description = "verify click_on_cancel_button_on_forgot_password")
+    public void VerifyForgotPasswerdWithEmail() throws Exception {
+        loginPage = new LoginPage(driver);
+        loginPage.ClickOnForgotButton();
+        Assert.assertTrue(driver.findElement(By.xpath("//div[@class='card forgot-form']")).isDisplayed());
+        loginPage.enterEmail("pallavi.amrut@neutrinotechlabs.com");
+        loginPage.clickonsubmitbtn();
+
+    }
+
+
+    @Severity(SeverityLevel.NORMAL)
+    @Story("story_id: For008 - verify click on cancel button on forgot password")
+    @Description("verify user able to click_on_cancel_button_on_forgot_password")
+    @Test(priority = 8, groups = "smoke", description = "verify click_on_cancel_button_on_forgot_password")
+    public void VerifyForgotPasswerdWithBlankEmail() throws Exception {
+        loginPage = new LoginPage(driver);
+        softAssert=new SoftAssert();
+        loginPage.ClickOnForgotButton();
+        Assert.assertTrue(driver.findElement(By.xpath("//div[@class='card forgot-form']")).isDisplayed());
+        String color=driver.findElement(By.xpath("//button[@type=\"submit\"]")).getCssValue("background-color");
+        softAssert.assertEquals(color,"rgba(158, 158, 158, 1)");
+       if(driver.findElement(By.xpath("//button[@type=\"submit\"]")).getAttribute("disabled").equals("true")){
+           System.out.println("Button is disable");
+       }
+       else {
+           System.out.println("Button is enable");
+       }
+        softAssert.assertAll();
+
     }
 }

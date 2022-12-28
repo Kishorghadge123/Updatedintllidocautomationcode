@@ -1,18 +1,15 @@
 package Pages;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
-import java.io.IOException;
 import java.util.List;
 
 public class DocumentPage {
     WebDriver driver = null;
+    Actions action;
 
 
     public DocumentPage(WebDriver driver) {
@@ -31,6 +28,9 @@ public class DocumentPage {
     public WebElement selectproject;
 
 
+    @FindBy(how = How.XPATH, using = "//mat-cell[contains(@class,'mat-column-codes')]//span[contains(@class,'mat-select-min-line')]")
+    List<WebElement> listOfICDColumnsInDiagnosisTab;
+
 
     @FindBy(xpath = "//span[contains(text(),' QA-Automation BRE ')]")
     public WebElement structproject;
@@ -45,6 +45,9 @@ public class DocumentPage {
     @FindBy(xpath = "//span[contains(text(),' MedicalReady.pdf ')]")
     public WebElement readydoc;
 
+    @FindBy(xpath = "//div[contains(text(),'Patient Demographics')]")
+    public WebElement demography;
+
     @FindBy(xpath = "//mat-label[contains(text(),'MedicalReady.pdf')]")
     public WebElement readydocname;
 
@@ -56,7 +59,7 @@ public class DocumentPage {
     @FindBy(xpath = "(//mat-icon[contains(text(),' add')])[1]")
     public WebElement adddiagnosis;
 
-    @FindBy(xpath = "(//span[contains(text(),' Save ')])[2]")
+    @FindBy(xpath = "//button[@class=\"mat-focus-indicator mat-raised-button mat-button-base mat-primary\"]")
     public WebElement save;
 
     @FindBy(xpath = "//span[contains(text(),' 11 ')]")
@@ -93,9 +96,11 @@ public class DocumentPage {
 
     @FindBy(xpath = "//span[contains(text(),'Add Comment')]")
     public WebElement dropdownhcc;
+    @FindBy(how = How.XPATH, using = "//input[@placeholder='Search']")
+    WebElement selectProjectSearchBox;
 
 
-    @FindBy(xpath = "(//span[contains(text(),' Save')])[3]")
+    @FindBy(xpath = "(//span[contains(text(),' Save')])[2]")
     public WebElement savehcc;
 
     @FindBy(xpath = "//mat-icon[contains(text(),' delete ')]")
@@ -104,6 +109,9 @@ public class DocumentPage {
 
     @FindBy(xpath = "//span[contains(text(),'Add ICD')]")
     public WebElement addicdbtn;
+
+    @FindBy(how=How.XPATH,using="//mat-tab-body[contains(@class,'mat-tab-body-active')]//mat-expansion-panel")
+    List<WebElement> listOfEncountersInDiagnosisTab;
 
 
     @FindBy(xpath = "//mat-header-cell[contains(text(),' ICD ')]//following::input[1]")
@@ -121,6 +129,8 @@ public class DocumentPage {
     @FindBy(xpath = "//span[contains(text(),'Please fill all fields for the diagnosis.')]")
     public WebElement savehccerrmsg;
 
+
+
     @FindBy(xpath = "//span[contains(text(),' Cancel')]")
     public WebElement cancel;
 
@@ -134,6 +144,7 @@ public class DocumentPage {
 
     @FindBy(xpath = "//span[contains(text(),'Submit')]")
     public WebElement submit;
+    public By documenttiles=By.xpath("//td[@class='mat-cell cdk-cell cdk-column-updated mat-column-updated ng-star-inserted']");
 
 
     @FindBy(xpath = "//span[contains(text() ,' Save Draft')]")
@@ -181,9 +192,12 @@ public class DocumentPage {
     @FindBy(xpath = "//span[contains(text(),'Clear')]")
     public WebElement clearbtn;
 
+    @FindBy(how = How.XPATH, using= "//div[text()=' Total Encounter Count : ']//input")
+    WebElement totalEncounterCountValue;
+
     @FindBy(xpath = "//span[contains(text(),' Ready ')]")
     public WebElement readyCheckBox;
-    @FindBy(xpath = "//span[contains(text(),' Rejected ')]")
+    @FindBy(xpath = "(//span[contains(text(),' Rejected ')])[2]")
     public WebElement rejectedCheckBox;
     @FindBy(xpath = "(//span[contains(text(),' Apply ')])[2]")
     public WebElement applyButton;
@@ -192,7 +206,7 @@ public class DocumentPage {
 
 
     @FindBy(xpath = "//mat-icon[contains(text(),'visibility')]")
-    public WebElement action;
+    public WebElement action1;
 
     @FindBy(xpath = "//button[@id=\"secondaryToolbarToggle\"]")
     public WebElement zoomoutdropdown;
@@ -252,6 +266,23 @@ public class DocumentPage {
         this.rejectedCheckBox.click();
     }
 
+    public int getTotalEncounterCount(){
+        return Integer.parseInt(totalEncounterCountValue.getAttribute("value"));
+    }
+
+
+
+
+
+
+    public void selectProjectFromDropDown(String projectName) {
+        selectProjectSearchBox.click();
+        selectProjectSearchBox.sendKeys(projectName);
+
+        /*Custome_Wait.waitVisibility
+                (driver, driver.findElement(By.xpath("//span[contains(text(),' "+projectName+" ')]")));*/
+        driver.findElement(By.xpath("//span[contains(text(),' "+projectName+" ')]")).click();
+    }
     public void clickOnApplyButton() {
         this.applyButton.click();
     }
@@ -261,7 +292,7 @@ public class DocumentPage {
     }
 
     public void clickOnActionButton(){
-        this.action.click();
+        this.action1.click();
     }
 
     public void zoomOutFunctinality(){
@@ -333,13 +364,29 @@ public class DocumentPage {
         this.dropdown.click();
     }
 
+
+    public void openAnalyticsScreenOfADoc(String docName){
+        action = new Actions(driver);
+        action.moveToElement(driver.findElement(By.xpath("//span[contains(text(),' "+docName+".pdf ')]")));
+        //.click().build().perform();
+        driver.findElement(By.xpath("//span[contains(text(),' "+docName+".pdf ')]")).click();
+    }
+
     public void selectProject() {
         this.selectproject.click();
     }
 
+//    public void clickOnRejectedDocument(){
+//        this.rejecteddoc.click();
+//    }
+
+
+
     public  void selectStructureProject(){
         this.structproject.click();
     }
+    @FindBy(how = How.XPATH, using= "//div[text()=' Total ICD Count : ']//input")
+    WebElement totalICDCountValue;
 
 
     public  void clickOnStructReadyDocument(){
@@ -351,6 +398,10 @@ public class DocumentPage {
 
     public void clickOnReadyDocument() {
         this.readydoc.click();
+    }
+
+    public  void  clickOnPatientDempgraphics(){
+        this.demography.click();
     }
 
     public void clickOnChartData() {
@@ -463,8 +514,91 @@ public class DocumentPage {
         this.savedraft.click();
     }
 
+    public List<WebElement> getListOfDocument(){
+        List<WebElement> documentlist=null;
+        try{
+            documentlist=driver.findElements(documenttiles);
+        }
+        catch (StaleElementReferenceException sere)
+        {
+            System.out.println("Stale Element Reference Exception");
+            sere.printStackTrace();
+            PageFactory.initElements(driver, this);
+            documentlist=driver.findElements(documenttiles);
+        }
+        return documentlist;
+    }
+
+
+    public String getCreatedDateOfSearchedUserInGridView() {
+        return driver.findElement(By.cssSelector("td.mat-column-received")).getText();//.split(" ")[1];
+    }
+
+    public String getUpdatedDateOfSearchedUserInGridView() {
+        return driver.findElement(By.cssSelector("td.mat-column-updated")).getText();//.split(" ")[1];
+    }
+
+
+
     public void selectProjectFromDropDown(int index) {
         driver.findElement(By.xpath("(//button[@role='menuitem']//span)[" + index + "]")).click();
     }
+
+    public int getTotalICDCount(){
+        return Integer.parseInt(totalICDCountValue.getAttribute("value"));
+    }
+
+    public int getTotalEncounterCountFromDiagnosisTab(){
+        /*if(NoDataDefaultMessageDiagnosisTab.isDisplayed()){
+            //System.out.println(NoEncountersDefaultMessage.getText());
+            return 0;
+        }
+        else*/
+        return listOfEncountersInDiagnosisTab.size();
+    }
+
+    public int getTotalICDCountFromDiagnosisTab(){
+        int count = 0;
+        //int k = 0;
+        /*if(NoDataDefaultMessageDiagnosisTab.isDisplayed()){
+            //System.out.println(NoEncountersDefaultMessage.getText());
+            return 0;
+        }*/
+
+        if(listOfICDColumnsInDiagnosisTab.size() == 0 ) {
+            System.out.println("No Diagnosis.");
+        }
+        else {
+            for(int i = 0; i < listOfICDColumnsInDiagnosisTab.size(); i++) {
+                /*if (listOfICDValuesInDiagnosisTab.get(i).getAttribute("style").contains("visibility: hidden")) {
+                    System.out.println("<mat-row>- style attribute: "+listOfICDValuesInDiagnosisTab.get(i).getAttribute("style"));
+                    System.out.println("Checking If condition: "+listOfICDValuesInDiagnosisTab.get(i).getAttribute("style").contains("visibility: hidden"));
+                    continue;
+                }*/
+                WebElement icdColumnElement = driver.findElement(By.xpath
+                        ("(//mat-cell[contains(@class,'mat-column-codes')]//span[contains(@class,'mat-select-min-line')])["+(i+1)+"]"));
+                //String jsGetInnerText = "return argument[0].innerText";
+                String ICDValues = (String) ((JavascriptExecutor) driver).executeScript("return arguments[0].textContent", icdColumnElement);
+
+                //.getAttribute("value");
+                //.getText();
+                //("(//mat-tab-body[contains(@class,'mat-tab-body-active')]//mat-row)["+(i+1)+"]//mat-cell[contains(@class,'mat-column-codes')]//span[contains(@class,'mat-select-min-line')]"))
+                //listOfICDValuesInDiagnosisTab.get(i).findElement(ICDValuesInADiagnosisRecord).getText();
+
+                System.out.println("ICD Column on UI: "+ICDValues);
+                    /*String[] list = ICDValues.split(", ");
+                    System.out.println(list.length);*/
+
+                List<String> listOfICDValues = List.of(ICDValues.split(", "));
+                System.out.println(listOfICDValues.size());
+                System.out.println(listOfICDValues.get(1));
+                count += listOfICDValues.size();
+                //k++;
+            }
+        }
+        //System.out.println("Total Diagnosis records: "+k);
+        return count;
+    }
+
 
 }

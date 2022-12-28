@@ -32,7 +32,7 @@ public class StructureTest extends BaseTest {
 
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 001 - Revamp Side Bar")
+    @Story("story_id: S001 - Revamp Side Bar")
     @Description("Revamp Side Bar")
     @Test(priority = 1, groups = "smoke", description = "Revamp Side Bar")
     public void Revamp_Side_Bar() throws Exception {
@@ -44,17 +44,17 @@ public class StructureTest extends BaseTest {
     driver.findElement(By.xpath("//span[contains(text(),' Users ')]")).isDisplayed();
     driver.findElement(By.xpath("//span[contains(text(),'Roles')]")).isDisplayed();
     driver.findElement(By.xpath("//span[contains(text(),' Templates ')]")).isDisplayed();
-    driver.findElement(By.xpath("//span[contains(text(),' Data Sets ')]")).isDisplayed();
+    driver.findElement(By.xpath("//span[contains(text(),' Datasets ')]")).isDisplayed();
     driver.findElement(By.xpath("//span[contains(text(),' Projects ')]")).isDisplayed();
     driver.findElement(By.xpath("//span[contains(text(),' Documents ')]")).isDisplayed();
 driver.findElement(By.xpath("//span[contains(text(),'Audit ')]")).isDisplayed();
         driver.findElement(By.xpath("//span[contains(text(),'Reports ')]")).isDisplayed();
         driver.findElement(By.xpath("//span[contains(text(),' Analytics ')]")).isDisplayed();
-        softAssert.assertAll();
+       // softAssert.assertAll();
     }
 
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 002 - verify_Data_Extracted_From_Document")
+    @Story("story_id: S002 - verify_Data_Extracted_From_Document")
     @Description("verify_Data_Extracted_From_Document")
     @Test(priority = 2, groups = "smoke", description = "verify_Data_Extracted_From_Document")
     public void verify_Data_Extracted_From_Document() throws Exception {
@@ -76,7 +76,7 @@ driver.findElement(By.xpath("//span[contains(text(),'Audit ')]")).isDisplayed();
 
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 03 -Check Zoom In and Out")
+    @Story("story_id: S003 -Check Zoom In and Out")
     @Description("Check Zoom In and Out")
     @Test(priority = 3, groups = "smoke", description = "Check Zoom In and Out")
     public void verifyTheZoomInOutButton() throws Exception {
@@ -104,9 +104,9 @@ driver.findElement(By.xpath("//span[contains(text(),'Audit ')]")).isDisplayed();
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 03 -Check Zoom In and Out")
+    @Story("story_id: S004 -Check Zoom In and Out")
     @Description("Check Zoom In and Out")
-    @Test(priority = 3, groups = "smoke", description = "Check Zoom In and Out")
+    @Test(priority = 4, groups = "smoke", description = "Check Zoom In and Out")
     public void verifyReleaseButtonFunctionality() throws Exception {
         struct=new StructurePage(driver);
         docobj=new DocumentPage(driver);
@@ -116,12 +116,12 @@ driver.findElement(By.xpath("//span[contains(text(),'Audit ')]")).isDisplayed();
         docobj.clickOnDocumentTab();
         waitForloadSpinner();
         docobj.clickOnDropdown();
-
+        Thread.sleep(2000);
         docobj.clickonsearchProjectName();
         waitForloadSpinner();
         struct.clickOnDocument();
         waitForloadSpinner();
-        struct.clickOnRealeseButton();
+
 
     }
 

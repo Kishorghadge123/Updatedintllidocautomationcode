@@ -2,16 +2,14 @@ package Pages;
 
 import Utilities.Custome_Wait;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
 import java.util.Random;
 
 public class CreateRolePage {
@@ -45,11 +43,13 @@ public class CreateRolePage {
     public By CancelBtn = By.xpath("(//span[contains(text(),'Cancel')])[2]");
     public  By search=By.xpath("//input[@placeholder=\"Search\"]");
     public By edit=By.xpath("//mat-icon[contains(text(),'create')]");
-    public By deletepermission=By.xpath("(//mat-icon[contains(text(),'cancel')])[1]");
+    public By deletepermission=By.xpath("(//span[contains(text(),'Cancel')])[2]");
     public By yes=By.xpath("//span[contains(text(),'Yes')]");
 
-@FindBy(xpath = "//input[@data-placeholder=\\\"Search\\\"]")
+@FindBy(xpath = "//input[@placeholder=\"Search\"]")
 public WebElement SearchRole;
+
+public By roleLocator=By.xpath("//tr[@class=\"mat-row cdk-row ng-star-inserted\"]");
 
 
     @FindBy(xpath = "//span[contains(text(), 'Add Role ')]")
@@ -60,6 +60,19 @@ public WebElement SearchRole;
 
     @FindBy(xpath = "//img[contains(@src,'Projects.svg')]")
     public WebElement projectbtn;
+
+@FindBy(xpath = "(//mat-icon[contains(text(),'cancel')])[1]")
+public WebElement cancelpermission1;
+
+    @FindBy(xpath = "(//mat-icon[contains(text(),'cancel')])[2]")
+    public WebElement cancelpermission2;
+
+
+    @FindBy(xpath = "(//mat-icon[contains(text(),'add_circle_outline')])[4]")
+    public WebElement addUSerInRole;
+    public void clickOnaddUSerInRole(){
+        this.addUSerInRole.click();
+    }
 
 
     @FindBy(xpath = "//mat-error[contains(text(),'Only alphabets,digits,parenthesis and hyphens are allowed.')]")
@@ -79,6 +92,47 @@ public WebElement SearchRole;
     public WebElement createRoleBtn;
     @FindBy(xpath = "//span[contains(text(),'Role name 111 already exists, please enter a different role name.')]")
     public WebElement SameUserError;
+    @FindBy(xpath = "//button[contains(text(),' Project ')]")
+    public WebElement projectOpn;
+    @FindBy(xpath = "//div[contains(text(),' Process Document ')]")
+    public WebElement processDocOpn;
+    public void clickOnProcessOpn(){
+        this.processDocOpn.click();
+    }
+    @FindBy(xpath = "//div[contains(text(),' Audit Document ')]")
+    public WebElement auditDocOpn;
+    public void clickOnAuditDocopn(){
+        this.auditDocOpn.click();
+    }
+
+
+    public void clickOnProjectOpn(){
+        this.projectOpn.click();
+    }
+
+    @FindBy(xpath = "//button[contains(text(),' Analytics ')]")
+    public WebElement analyticpermisson;
+    public void analyticBtn() {
+        this.analyticpermisson.click();
+    }
+
+
+    @FindBy(xpath = "//div[contains(text(),' View Analytics ')]")
+    public WebElement viewAnalyticOpn;
+    @FindBy(xpath = "//button[contains(text(),' Document ')]")
+    public WebElement DocumentOpn;
+    public void clickOnDocumentOpn(){
+        this.DocumentOpn.click();
+    }
+
+    @FindBy(xpath = "//div[contains(text(),' Release Document ')]")
+    public WebElement releaseDocumentOpn;
+    public void clickOnReleaseDocumentopn(){
+        this.releaseDocumentOpn.click();
+    }
+    public void clickOnViewAnalyticOpn() {
+        this.viewAnalyticOpn.click();
+    }
 
 
     @FindBy(xpath = "//button[@aria-label='Next page']")
@@ -105,9 +159,15 @@ public WebElement SearchRole;
     }
 
     public  void  clickOnSearchRole(String text){
-        this.SearchRole.click();
+//        this.SearchRole.click();
         this.SearchRole.sendKeys(text);
     }
+
+    public String getCreatedSearchRoleInGridView(){
+      return  driver.findElement(By.cssSelector("td.mat-column-created")).getText();//.split(" ")[1];
+
+    }
+
     public void clickOnCreateProjectButton(){
         this.createbtnproject.click();
     }
@@ -161,6 +221,14 @@ public WebElement SearchRole;
         driver.findElement(AddPermission).click();
     }
 
+
+    public void cancelPermission2(){
+        this.cancelpermission2.click() ;}
+
+
+    public void cancelPermission1(){
+       this.cancelpermission1.click() ;}
+
     @Step("click On AddPermission Role Button")
     public void roleOption() {
         driver.findElement(RoleOption).click();
@@ -189,6 +257,28 @@ public WebElement SearchRole;
 
         //Thread.sleep(3000);
     }
+    public String getCreatedDateFromUserTile(int index){
+        return driver.findElement(By.xpath("//div[contains(text(),' Created Date ')]//following::td[3]["+index+"]")).getText();
+    }
+
+    public String getUpdatedDateFromUserTile(int index) {
+        return driver.findElement(By.xpath("//div[contains(text(),' Updated Date ')]//following::td[3]["+index+"]")).getText();
+    }
+
+
+
+    public List<WebElement> getListOfRoleTiles(){
+    List<WebElement> roleTiles=null;
+    try {
+        roleTiles = driver.findElements(roleLocator);
+    }catch(StaleElementReferenceException sere){
+        System.out.println("Stale Element Reference Exception");
+        sere.printStackTrace();
+        PageFactory.initElements(driver, this);
+       roleTiles=driver.findElements(roleLocator);
+    }
+    return roleTiles;
+}
 
     public void searchRole(String searchText) throws InterruptedException {
         searchButton.sendKeys(searchText+ Keys.RETURN);
@@ -265,6 +355,7 @@ public WebElement SearchRole;
     public void clickOnEditButton(){
         driver.findElement(edit).click();
     }
+
 
     @Step("click on yes")
     public void clickOnYes(){

@@ -2,17 +2,23 @@ package Tests;
 
 import Pages.AuditPage;
 import Utilities.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+
+import java.util.List;
 
 
 public class AuditTest extends BaseTest {
@@ -33,11 +39,11 @@ public class AuditTest extends BaseTest {
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        driver.close();
     }
 
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 001 - verify Drop Downs Of Analytics And Filters In AuditPage")
+    @Story("story_id: AU001 - verify Drop Downs Of Analytics And Filters In AuditPage")
     @Description("verify Drop Downs Of Analytics And Filters In AuditPage")
     @Test(priority = 1, groups = "smoke", description = "verify Drop Downs Of Analytics And Filters In AuditPage")
     public void verifyDropDownsOfAnalyticsAndFiltersInAuditPage() throws Exception {
@@ -50,7 +56,7 @@ public class AuditTest extends BaseTest {
 
     }
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 002 - verify total Count Of Audited and Audit Pending documents")
+    @Story("story_id: AU002 - verify total Count Of Audited and Audit Pending documents")
     @Description("verify_total_Count_of_Audited_and_Audit_Pending_documents")
     @Test(priority = 2, groups = "smoke", description = "verify_total_Count_of_Audited_and_Audit_Pending_documents")
     public void verifyTotalCountOfAuditedAndAuditPendingDoc() throws Exception {
@@ -58,14 +64,12 @@ public class AuditTest extends BaseTest {
         waitForloadSpinner();
         auditPage.clickOnauditTab();
         waitForloadSpinner();
-        auditPage.selectProject();
-        waitForloadSpinner();
         Assert.assertEquals(Integer.parseInt(auditPage.verifyTheTotalCountOfAuditedAndAuditPendingDoc(2)) + Integer.parseInt(auditPage.verifyTheTotalCountOfAuditedAndAuditPendingDoc(3)),
                 Integer.parseInt(auditPage.verifyTheTotalCountOfAuditedAndAuditPendingDoc(1)));
     }
 
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 003 - verify All Filters Of Filter DropDown")
+    @Story("story_id: AU003 - verify All Filters Of Filter DropDown")
     @Description("verify_all_filters_of_filter_DropDown")
     @Test(priority = 3, groups = "smoke", description = "verify_all_filters_of_filter_DropDown")
     public void verifyAllFiltersOfFilterDropDown() throws Exception {
@@ -81,7 +85,7 @@ public class AuditTest extends BaseTest {
     }
 
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 004 - verify the user able to sort the table from data")
+    @Story("story_id: AU004 - verify the user able to sort the table from data")
     @Description("verify_the_user_able_to_sort_the_table_from_data")
     @Test(priority = 4, groups = "smoke", description = "verify_the_user_able_to_sort_the_table_from_data")
     public void verifytableDataisSorting() throws Exception {
@@ -92,36 +96,38 @@ public class AuditTest extends BaseTest {
         Scroll_Page scroll_page = new Scroll_Page(driver);
         waitForloadSpinner();
         auditPage.clickOnauditTab();
-        Thread.sleep(5000);
+        waitForloadSpinner();
         auditPage.selectProject();
         waitForloadSpinner();
         auditPage.ClickOnDropDownsInAuditPage(2);
         custom.waitVisibility(driver,driver.findElement(By.xpath("(//div[contains(@class,'mat-form-field-infix ng-tns-c')]//div[contains(@class,'mat-select-arrow-wrapper ng-tns-c')])[2]")));
         auditPage.clickStatusDropDownArrow();
-        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' Pending ')]")));
+        Thread.sleep(1000);
         auditPage.clickOnPendingStatus();
-        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' Pending ')]")));
+      //  Thread.sleep(2000);
+       custom.waitVisibility(driver, driver.findElement(By.xpath("(//span[contains(text(),' Pending ')])[2]")));
         auditPage.clickOnPendingStatus();
         Thread.sleep(2000);
         clickOnOutSide.clickOutside();
         custom.waitVisibility(driver, driver.findElement(By.xpath("(//button[contains(@class,'mat-focus-indicator mat-flat-button mat-button-base mat-primary')]//span[contains(text(),'Apply')])[2]")));
         auditPage.clickOnApplyFilter();
-       waitForloadSpinner();
+        waitForloadSpinner();
         auditPage.verifySortsortingofTableData(1);
-        sortingLists.sortingListInOrder("ascending", 1);
-      waitForloadSpinner();
+        sortingLists.sortingListInOrder("ascending", 6);
+        waitForloadSpinner();
         auditPage.verifySortsortingofTableData(1);
-        sortingLists.sortingListInOrder("descending", 2);
-       waitForloadSpinner();
+       driver.navigate().refresh();
+        sortingLists.sortingListInOrder("descending", 6);
+        waitForloadSpinner();
         auditPage.verifySortsortingofTableData(2);
-        sortingLists.sortingListInOrder("ascending", 2);
-     waitForloadSpinner();
+        sortingLists.sortingListInOrder("ascending", 6);
+        waitForloadSpinner();
         auditPage.verifySortsortingofTableData(2);
-        sortingLists.sortingListInOrder("descending", 2);
+        sortingLists.sortingListInOrder("descending", 6);
     }
 
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 005 - verfiy Doc Status Is Diaplay In Table As Per Filters")
+    @Story("story_id: AU005 - verfiy Doc Status Is Diaplay In Table As Per Filters")
     @Description("verfiyDocStatusIsDiaplayInTableAsPerFilter")
     @Test(priority = 5, groups = "smoke", description = "verfiyDocStatusIsDiaplayInTableAsPerFilter")
     public void verfiyDocStatusIsDiaplayInTableAsPerFilter() throws Exception {
@@ -136,9 +142,9 @@ public class AuditTest extends BaseTest {
         waitForloadSpinner();
         auditPage.ClickOnDropDownsInAuditPage(2);
         auditPage.clickStatusDropDownArrow();
-     custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' Pending ')]")));
-     auditPage.clickOnPendingStatus();
-        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' Pending ')]")));
+        Thread.sleep(1000);
+        auditPage.clickOnPendingStatus();
+        custom.waitVisibility(driver, driver.findElement(By.xpath("(//span[contains(text(),' Pending ')])[2]")));
 
         auditPage.clickOnPendingStatus();
         clickOnOutSide.clickOutside();
@@ -148,18 +154,18 @@ public class AuditTest extends BaseTest {
         verifyTextOfTable.verfiyDisplayStatusOfDoc("Pending", 3);
         custom.waitVisibility(driver, driver.findElement(By.xpath("(//div[contains(@class,'mat-form-field-infix ng-tns-c')]//div[contains(@class,'mat-select-arrow-wrapper ng-tns-c')])[2]")));
         auditPage.clickStatusDropDownArrow();
-        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' Pending ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("(//span[contains(text(),' Pending ')])[2]")));
         auditPage.clickOnPendingStatus();
-        custom.waitVisibility(driver, driver.findElement(By.xpath("//span[contains(text(),' Pending ')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("(//span[contains(text(),' Pending ')])[2]")));
         auditPage.clickOnAuditedStatus();
         clickOnOutSide.clickOutside();
         Thread.sleep(2000);
         auditPage.clickOnApplyFilter();
-       waitForloadSpinner();
+        waitForloadSpinner();
         verifyTextOfTable.verfiyDisplayStatusOfDoc("Audited", 3);
     }
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 006 - verify Text Of Audit Tab")
+    @Story("story_id: AU006 - verify Text Of Audit Tab")
     @Description("verify Text Of Audit Tab")
     @Test(priority = 6, groups = "smoke", description = "verify Text Of Audit Tab")
     public void verifyTextOfAuditTab() throws Exception {
@@ -174,21 +180,18 @@ public class AuditTest extends BaseTest {
         auditPage.selectProject();
         waitForloadSpinner();
         auditPage.ClickOnDropDownsInAuditPage(2);
+        Thread.sleep(1000);
         auditPage.clickStatusDropDownArrow();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' Pending ')]")));
+        Thread.sleep(2000);
         auditPage.clickOnPendingStatus();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' Pending ')]")));
-        auditPage.clickOnPendingStatus();
+        Thread.sleep(1000);
         clickOnOutSide.clickOutside();
-       custom.waitVisibility(driver, driver.findElement(By.xpath("(//table/tbody/tr/td[8])[1]")));
+        Thread.sleep(1000);
         auditPage.clickOnActionButtoninTable();
-        softAssert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),' Save Draft')]")).getText(), "Save Draft");
-        softAssert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'Submit')]")).getText(), "Submit");
-        softAssert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'Release')]")).getText(), "Release");
-        softAssert.assertAll();
+
     }
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 007 - verify_That_Data_Extracted_From_Document")
+    @Story("story_id: AU007 - verify_That_Data_Extracted_From_Document")
     @Description("verify_That_Data_Extracted_From_Document")
     @Test(priority = 7, groups = "smoke", description = "verify_That_Data_Extracted_From_Document")
     public void verify_That_Data_Extracted_From_Document() throws Exception {
@@ -205,9 +208,9 @@ public class AuditTest extends BaseTest {
         waitForloadSpinner();
         auditPage.ClickOnDropDownsInAuditPage(2);
         auditPage.clickStatusDropDownArrow();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' Pending ')]")));
+        Thread.sleep(1000);
         auditPage.clickOnPendingStatus();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//span[contains(text(),' Pending ')]")));
+        custom.waitVisibility(driver,driver.findElement(By.xpath("(//span[contains(text(),' Pending ')])[2]")));
         auditPage.clickOnPendingStatus();
         clickOnOutSide.clickOutside();
         Thread.sleep(2000);
@@ -229,7 +232,7 @@ public class AuditTest extends BaseTest {
         scroll_page.ScrollUpDown(auditPage.ssn);
     }
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 008 - verifyTheClearFilterButtonInFilter")
+    @Story("story_id: AU008 - verifyTheClearFilterButtonInFilter")
     @Description("verifyTheClearFilterButtonInFilter")
     @Test(priority = 8, groups = "smoke", description = "verifyTheClearFilterButtonInFilter", enabled = true)
     public void verifyTheClearFilterButtonInFilter() throws Exception {
@@ -259,9 +262,9 @@ public class AuditTest extends BaseTest {
 
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 006 -All DropDown Arrow In Table")
+    @Story("story_id: AU009 -All DropDown Arrow In Table")
     @Description("verify_all_dropDown_arrow_in_table")
-    @Test(priority = 6, groups = "smoke", description = "verify_all_dropDown_arrow_in_table")
+    @Test(priority = 9, groups = "smoke", description = "verify_all_dropDown_arrow_in_table")
     public void verifyAllDropDownArrowInTable() throws Exception {
         softAssert = new SoftAssert();
         auditPage = new AuditPage(driver);
@@ -308,16 +311,16 @@ public class AuditTest extends BaseTest {
 
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 005 -The Total Count Of User in UserTab")
+    @Story("story_id: AU010 -The Total Count Of User in UserTab")
     @Description("verify_the_total_Count_Of_user_in_UserTab")
-    @Test(priority = 5, groups = "smoke", description = "verify_the_total_Count_Of_user_in_UserTab")
+    @Test(priority = 10, groups = "smoke", description = "verify_the_total_Count_Of_user_in_UserTab")
     public void verifyTheTotalCountOfUserinUserTab() throws Exception {
         //scrollPage = new Scroll_Page(driver);
         auditPage = new AuditPage(driver);
         sortingLists = new SortingLists(driver);
         waitForloadSpinner();
         auditPage.clickOnauditTab();
-       waitForloadSpinner();
+        waitForloadSpinner();
    /* docobj.clickonGridIcon();
     Thread.sleep(5000);*/
         JavascriptExecutor jsp = (JavascriptExecutor) driver;

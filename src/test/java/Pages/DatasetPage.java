@@ -17,7 +17,7 @@ public class DatasetPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "(//div[@class='mat-list-item-content'])[4]")
+    @FindBy(xpath = "//img[contains(@src,\"Datasets.svg\")]")
     public WebElement dataSets;
 
     @FindBy(xpath = "//mat-icon[contains(text(),'add_circle_outline')]")
@@ -33,7 +33,7 @@ public class DatasetPage {
     @FindBy(xpath = "//mat-icon[contains(text(),'search')]")
     public WebElement searchBar;
 
-    @FindBy(xpath = "//td[contains(text(),'QA Automation')]")
+    @FindBy(xpath = "//td[contains(text(),'QAAutomation')]")
     public WebElement clickonCategory;
 
     @FindBy(xpath = "//td[contains(text(),'QA Automation')]/following::div[contains(text(),'Datasets')]")
@@ -121,7 +121,7 @@ public class DatasetPage {
     }
 
     public void sendCategoryName() {
-        this.searchBox.sendKeys("QA Automation");
+        this.searchBox.sendKeys("QAAutomation");
     }
 
     public void clickOnSearchBarIcon() {
@@ -141,7 +141,7 @@ public class DatasetPage {
     }
 
     public void searchPatientName() {
-        this.searchBox1.sendKeys("Jennifer");
+        this.searchBox1.sendKeys("1");
     }
 
     public void clickOnserchBarIcon1() {

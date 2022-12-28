@@ -1,7 +1,7 @@
 package Tests;
-
 import Pages.LoginPage;
 import Pages.UserPage;
+import Utilities.ClickOnOutSide;
 import Utilities.Custome_Wait;
 import Utilities.DateTimeUtils;
 import Utilities.SortingLists;
@@ -14,17 +14,15 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
+
 
 public class UserTest extends BaseTest {
     UserPage userPage;
     SoftAssert softAssert;
     SortingLists sortingLists;
     Custome_Wait custom;
-
+   ClickOnOutSide clickOnOutSide;
     @BeforeMethod
     public void setmethod() throws Exception {
         setup();
@@ -33,11 +31,11 @@ public class UserTest extends BaseTest {
 
 @AfterMethod
 public void teardown(){
-        driver.quit();
+        driver.close();
 }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 001 -Search project name on user page")
+    @Story("story_id: U001 -Search project name on user page")
     @Description(" verify_that_user_able_to_Search_project_name_on_user_page")
     @Test(priority = 1, groups = "smoke", description = "verify_that_user_able_to_Search_project_name_on_user_page")
     public void verifyProjectnameShouldBeSearchOnUserPage() throws Exception {
@@ -56,7 +54,7 @@ public void teardown(){
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 002 -verify User Able To Click On Cancel Button")
+    @Story("story_id: U002 -verify User Able To Click On Cancel Button")
     @Description(" verify_user_able_to_click_on_cancel_button")
     @Test(priority = 2, groups = "smoke", description = "verify_user_able_to_click_on_cancel_button")
     public void verifyUserAbleToClickOnCancelButton() throws Exception {
@@ -69,7 +67,7 @@ public void teardown(){
         userPage.clickonGridIcon();
         custom.waitVisibility(driver,driver.findElement(By.xpath("//input[@placeholder='Search']")));
         userPage.searchProjectInUserPage("QA Automation Project");
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//button[contains(@class,'mat-focus-indicator outline-none foregroundColor mat-mini-fab mat-button-base mat-accent ng-star-inserted')]")));
+       Thread.sleep(3000);
         userPage.clickonActionBtton();
         waitForloadSpinner();
         userPage.clickonCancelButtonOfEditUser();
@@ -78,7 +76,7 @@ public void teardown(){
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 003 -Create New User and Verify All Text Of Create User")
+    @Story("story_id: U003 -Create New User and Verify All Text Of Create User")
     @Description(" verify_user_able_to_create_new_user_with_blank_data_and_verify_all_text_of_create_user")
     @Test(priority = 3, groups = "smoke", description = "verify_user_able_to_create_new_user_with_blank_data_and_verify_all_text_of_create_user")
     public void verifyUserableToCreatNewUserAndVerifyAllTextOfCreatUser() throws Exception {
@@ -100,7 +98,7 @@ public void teardown(){
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 004 -Click On Active Role Toggle Button In UserTab")
+    @Story("story_id: U004 -Click On Active Role Toggle Button In UserTab")
     @Description("verify_user_able_to_click_on_active_role_toggle_button_in_user_tab")
     @Test(priority = 4, groups = "smoke", description = "verify_user_able_to_click_on_active_role_toggle_button_in_user_tab")
     public void verifyWorkingOfToggleButton() throws Exception {
@@ -121,7 +119,7 @@ public void teardown(){
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 005 -The Total Count Of User in UserTab")
+    @Story("story_id: U005 -The Total Count Of User in UserTab")
     @Description("verify_the_total_Count_Of_user_in_UserTab")
     @Test(priority = 5, groups = "smoke", description = "verify_the_total_Count_Of_user_in_UserTab")
     public void verifyTheTotalCountOfUserinUserTab() throws Exception {
@@ -145,7 +143,7 @@ public void teardown(){
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 006 -All DropDown Arrow In Table")
+    @Story("story_id: U006 -All DropDown Arrow In Table")
     @Description("verify_all_dropDown_arrow_in_table")
     @Test(priority = 6, groups = "smoke", description = "verify_all_dropDown_arrow_in_table")
     public void verifyAllDropDownArrowInTable() throws Exception {
@@ -181,7 +179,7 @@ public void teardown(){
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 007 -To Add Or Delete Role")
+    @Story("story_id: U007 -To Add Or Delete Role")
     @Description("verify_user_able_to_add_or_delete_role")
     @Test(priority = 7, groups = "smoke", description = "verify_user_able_to_add_or_delete_role")
     public void verifyUserAbleToAddOrDeletRole() throws Exception {
@@ -196,6 +194,7 @@ public void teardown(){
         custom.waitVisibility(driver,driver.findElement(By.xpath("//input[@placeholder='Search']")));
 
         userPage.searchProjectInUserPage("QA Automation Project");
+        Thread.sleep(2000);
         userPage.clickonActionBtton();
         waitForloadSpinner();
         userPage.clickOCancelButton();
@@ -205,7 +204,7 @@ public void teardown(){
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 008 -verifyUserAbleToUpdateProjectNameandPassword")
+    @Story("story_id: U008 -verifyUserAbleToUpdateProjectNameandPassword")
     @Description("verifyUserAbleToUpdateProjectNameandPassword")
     @Test(priority = 8, groups = "smoke", description = "verifyUserAbleToUpdateProjectNameandPassword")
 
@@ -218,11 +217,9 @@ public void teardown(){
         userPage.userclickOnUserTab();
         waitForloadSpinner();
         userPage.clickonGridIcon();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//input[@placeholder='Search']")));
-
+        Thread.sleep(3000);
         userPage.searchProjectInUserPage("QA Automation Project");
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//button[contains(@class,'mat-focus-indicator outline-none foregroundColor mat-mini-fab mat-button-base mat-accent ng-star-inserted')]")));
-
+       Thread.sleep(2000);
         userPage.clickonActionBtton();
         waitForloadSpinner();
         userPage.updateUsername();
@@ -238,7 +235,7 @@ public void teardown(){
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 009 -VerifyUserWithblankUserAndPassword")
+    @Story("story_id: U009 -VerifyUserWithblankUserAndPassword")
     @Description("VerifyUserWithblankUserAndPassword")
     @Test(priority = 9, groups = "smoke", description = "VerifyUserWithblankUserAndPassword")
     public void VerifyUpdateUserWithblankUserAndPassword() throws Exception {
@@ -250,9 +247,9 @@ public void teardown(){
         userPage.userclickOnUserTab();
         waitForloadSpinner();
         userPage.clickonGridIcon();
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//input[@placeholder='Search']")));
+        Thread.sleep(3000);
         userPage.searchProjectInUserPage("QA Automation Project");
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//button[contains(@class,'mat-focus-indicator outline-none foregroundColor mat-mini-fab mat-button-base mat-accent ng-star-inserted')]")));
+        Thread.sleep(2000);
         userPage.clickonActionBtton();
         waitForloadSpinner();
         userPage.blankUsername();
@@ -265,7 +262,7 @@ public void teardown(){
 
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 010 -VerifyUserWithblankUserAndPassword")
+    @Story("story_id: U010 -VerifyUserWithblankUserAndPassword")
     @Description("VerifyUserWithblankUserAndPassword")
     @Test(priority = 10, groups = "smoke", description = "VerifyUserWithblankUserAndPassword")
     public void VerifyUserIsAbleToUpdateUserWithInvalidUsernameAndPassword() throws Exception {
@@ -279,20 +276,18 @@ public void teardown(){
         userPage.clickonGridIcon();
        custom.waitVisibility(driver,driver.findElement(By.xpath("//input[@placeholder='Search']")));
         userPage.searchProjectInUserPage("Pratiksha");
-        custom.waitVisibility(driver,driver.findElement(By.xpath("//button[contains(@class,'mat-focus-indicator outline-none foregroundColor mat-mini-fab mat-button-base mat-accent ng-star-inserted')]")));
+        Thread.sleep(2000);
         userPage.clickonActionBtton();
         waitForloadSpinner();
         userPage.enetrInvalidUsername("111");
         userPage.enterInvalidPassword("12");
         userPage.clickOnUpdateButton();
         softAssert.assertEquals(driver.findElement(By.xpath("//mat-error[contains(text(),'Please enter only characters.')]")).getText(), "Please enter only characters.");
-        softAssert.assertEquals(driver.findElement(By.xpath("//mat-error[contains(text(),'A password should contain an uppercase and lowercase characters. and in between 8 to 12  ')]")).getText(), "A password should contain an uppercase and lowercase characters. and in between 8 to 12");
-        softAssert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'Please enter all the details before submitting.')]")).getText(), "Please enter all the details before submitting.");
         softAssert.assertAll();
     }
 
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 011 -VerifyUserWithblankUserAndPassword")
+    @Story("story_id: U011 -VerifyUserWithblankUserAndPassword")
     @Description("VerifyUserWithblankUserAndPassword")
     @Test(priority = 11, groups = "smoke", description = "VerifyUserWithblankUserAndPassword")
     public void VerifyUserIsAbleToCreateUserWithInvalidEmailAndName() throws Exception {
@@ -318,7 +313,7 @@ public void teardown(){
 
     }
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 012 -create user with exiting name")
+    @Story("story_id: U012 -create user with exiting name")
     @Description("create user with exiting name")
     @Test(priority = 12, groups = "smoke", description = "create user with exiting name")
     public void create_user_with_exiting_name() throws Exception {
@@ -344,9 +339,9 @@ public void teardown(){
 
     List<WebElement> userTiles = null;
     @Severity(SeverityLevel.CRITICAL)
-    @Story("story_id: 009 -verify details on user tiles")
+    @Story("story_id: U013 -verify details on user tiles")
     @Description("verify_details_on_user_tiles")
-    @Test(priority = 9, groups = "smoke", description = "verify_details_on_user_tiles")
+    @Test(priority = 13, groups = "smoke", description = "verify_details_on_user_tiles")
     public void verifyTileDetailsForAllUsers() throws Exception {
         userPage = new UserPage(driver);
         waitForloadSpinner();
@@ -372,9 +367,9 @@ public void teardown(){
         }
     }
 
-    @Story("story_id: 010 -verify user active status")
+    @Story("story_id: U014 -verify user active status")
     @Description("verify_user_active_status")
-    @Test(priority = 10, groups = "smoke", description = "verify_user_active_status", dataProvider = "userEmailIds")
+    @Test(priority = 14, groups = "smoke", description = "verify_user_active_status", dataProvider = "userEmailIds")
     public void verifyUserActiveInactiveStatus(String userEmailId) throws Exception {
         userPage = new UserPage(driver);
         waitForloadSpinner();
@@ -404,11 +399,11 @@ public void teardown(){
         };
     }
 
-    @Story("story_id: 011 -login_with_another_user")
+    @Story("story_id: U015 -login_with_another_user")
     @Description("login_with_another_user")
-    @Test(priority = 11, groups = "smoke", description = "login_with_another_user")
+    @Test(priority = 15, groups = "smoke", description = "login_with_another_user")
     public void login_with_another_user() throws Exception {
-        userPage=new UserPage(driver);
+        userPage = new UserPage(driver);
         loginPage = new LoginPage(driver);
         waitForloadSpinner();
         userPage.clickOnLogoutButton();
@@ -417,29 +412,30 @@ public void teardown(){
         loginPage.setPassword("Super@1111");
         loginPage.clickLoginButton();
 
-    }
-    @Story("story_id: 012 -verify user updated date greater than created date")
-    @Description("verify_user_updated_date_greater_than_created_date")
-    @Test(priority = 12, groups = "smoke", description = "verify_user_updated_date_greater_than_created_date")
-    public void verifyUserUpdatedDate() throws Exception {
-        userPage = new UserPage(driver);
-        waitForloadSpinner();
-        userPage.userclickOnUserTab();
-        waitForloadSpinner();
-        String userEmailId = "michael223@gmail.com";
-        //"pradnyaauditor@gmail.com";*/
-        userPage.clickonGridIcon();
-        userPage.searchUserInGridView(userEmailId);
-        //softAssert = new SoftAssert();
-        System.out.println("Created Date: "+ userPage.getCreatedDateOfSearchedUserInGridView()+"  |  Updated Date: "+userPage.getUpdatedDateOfSearchedUserInGridView());
-        Assert.assertTrue(DateTimeUtils.compareDates
-                        (userPage.getCreatedDateOfSearchedUserInGridView(),userPage.getUpdatedDateOfSearchedUserInGridView())
-                , "Updated Date is not greater than Created Date for the user.");
+
     }
 
-    @Story("story_id: 013 -verify the format of the dates in users page")
+    @Story("story_id: U015 -login_with_another_user")
+    @Description("login_with_another_user")
+    @Test(priority = 15, groups = "smoke", description = "login_with_another_user")
+    public void check_User_Is_Inactive()throws Exception {
+        userPage = new UserPage(driver);
+        softAssert=new SoftAssert();
+        loginPage = new LoginPage(driver);
+        waitForloadSpinner();
+        userPage.clickOnLogoutButton();
+        waitForloadSpinner();
+        loginPage.EnterUsername("amar.gaikwad@neutrinotechlabs.com");
+        loginPage.setPassword("Amar@12345");
+        loginPage.clickLoginButton();
+//        softAssert.assertEquals(driver.findElement(By.xpath("//span[contains(text(),'User is inactive. Please contact Administration')]")).getText(),"");
+
+
+    }
+
+    @Story("story_id: U016 -verify the format of the dates in users page")
     @Description("verify_the_format_of_the_dates_in_users_page")
-    @Test(priority = 13, groups = "smoke", description = "verify_the_format_of_the_dates_in_users_page")
+    @Test(priority = 16, groups = "smoke", description = "verify_the_format_of_the_dates_in_users_page")
     public void verifyDateFormatInUsersPage() throws Exception {
         userPage = new UserPage(driver);
         waitForloadSpinner();
@@ -452,9 +448,9 @@ public void teardown(){
                 , "Date is not in correct format.");
     }
 
-    @Story("story_id: 014 -verify user updated date greater than created date for all users")
+    @Story("story_id: U017 -verify user updated date greater than created date for all users")
     @Description("verify_user_updated_date_greater_than_created_date")
-    @Test(priority = 14, groups = "smoke", description = "verify_user_updated_date_greater_than_created_date_for_all_users")
+    @Test(priority = 17, groups = "smoke", description = "verify_user_updated_date_greater_than_created_date_for_all_users")
     public void verifyUserUpdatedDateForAllUsers() throws Exception {
         softAssert = new SoftAssert();
         userPage = new UserPage(driver);
@@ -470,6 +466,81 @@ public void teardown(){
         }
         softAssert.assertAll();
     }
+
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("story_id: U018 -VerifyEmailField")
+    @Description("VerifyEmailField")
+    @Test(priority = 18, groups = "smoke", description = "VerifyUserWithblankUserAndPassword")
+    public void VerifyEmailField() throws Exception {
+        userPage = new UserPage(driver);
+        softAssert = new SoftAssert();
+        custom=new Custome_Wait(driver);
+        //verify the text of user Button
+        waitForloadSpinner();
+        userPage.userclickOnUserTab();
+        waitForloadSpinner();
+        userPage.clickonGridIcon();
+        custom.waitVisibility(driver,driver.findElement(By.xpath("//input[@placeholder='Search']")));
+        userPage.searchProjectInUserPage("QA Automation Project");
+       Thread.sleep(3000);
+
+        userPage.clickonActionBtton();
+        waitForloadSpinner();
+        if(driver.findElement(By.xpath("//input[@formcontrolname=\"email\"]")).isEnabled()){
+            System.out.println("Editable");
+        }
+        else
+        {
+            System.out.println("Not Editable");
+        }
+softAssert.assertAll();
+    }
+
+
+
+    @Story("story_id: U019 -Verify the inactive user logo and active user logo.")
+    @Description("Verify the inactive user logo and active user logo.")
+    @Test(priority = 19, groups = "smoke", description = "Verify the inactive user logo and active user logo")
+    public void verifyActiveInactiveUserColour() throws Exception{
+        userPage = new UserPage(driver);
+        softAssert=new SoftAssert();
+        waitForloadSpinner();
+        userPage.userclickOnUserTab();
+        waitForloadSpinner();
+        userPage.clickonGridIcon();
+        userPage.searchProjectInUserPage("user@gmail.com");
+        Thread.sleep(3000);
+        String colorGrey = driver.findElement(By.xpath("(//mat-icon[contains(text(),'person')])[1]")).getCssValue("Color");
+        System.out.println(colorGrey);
+        softAssert.assertEquals(driver.findElement(By.xpath("(//mat-icon[contains(text(),'person')])[1]")).getCssValue("Color"),"rgb(108, 117, 125)");
+        driver.findElement(By.xpath("//input[@placeholder='Search']")).clear();
+        Thread.sleep(1000);
+        userPage.searchProjectInUserPage("omtest");
+        String colorOrg = driver.findElement(By.xpath("(//mat-icon[contains(text(),'person')])[1]")).getCssValue("color");
+        System.out.println(colorOrg);
+        softAssert.assertEquals(driver.findElement(By.xpath("(//mat-icon[contains(text(),'person')])[1]")).getCssValue("Color"),"rgba(232, 112, 51, 1)");
+        softAssert.assertAll();
+    }
+    @Story("story_id:  U020 -Verify the validation of Name text box. {Invalid Value(enter Special Character)}")
+    @Description("Verify the validation of Name text box. {Invalid Value(enter Special Character)}")
+    @Test(priority = 20, groups = "smoke", description = "Verify the validation of Name text box. {Invalid Value(enter Special Character)}")
+    public void verifyUsernameForNewUser() throws Exception{
+        userPage = new UserPage(driver);
+        softAssert=new SoftAssert();
+        clickOnOutSide = new ClickOnOutSide(driver);
+        waitForloadSpinner();
+        userPage.userclickOnUserTab();
+        waitForloadSpinner();
+        userPage.clickOnCreateUserButton();
+        Thread.sleep(2000);
+        userPage.enterInvalidName("!@#$%%");
+        userPage.enterInvalidEmail("abc");
+        Thread.sleep(1000);
+        softAssert.assertEquals(driver.findElement(By.xpath("//mat-error[contains(text(),'Please enter only characters.')]")).getText(),"Please enter only characters.");
+        softAssert.assertAll();
+    }
+
 
 }
 

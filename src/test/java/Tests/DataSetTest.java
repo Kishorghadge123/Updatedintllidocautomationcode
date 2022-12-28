@@ -32,20 +32,21 @@ public class DataSetTest extends BaseTest {
     }
 
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 001  - verify that user is able to Check search Datasets on user page ")
+    @Story("story_id: D001  - verify that user is able to Check search Datasets on user page ")
     @Description("verify_that_user_is_able_to_Check_Datasets_on_user_page")
     @Test(priority = 1, groups = "smoke", description = "verify_that_user_is_able_to_Check_Datasets_on_user_page")
     public void verifySearchDatasetsOnUserPage() throws Exception {
         softAssert = new SoftAssert();
         DatasetPageObj = new DatasetPage(driver);
+        clickoutside = new ClickOnOutSide(driver);
         custom = new Custome_Wait(driver);
         waitForloadSpinner();
         DatasetPageObj.clickONDatasetPage();
         waitForloadSpinner();
         DatasetPageObj.sendCategoryName();
-        custom.waitVisibility(driver, driver.findElement(By.xpath("//td[contains(text(),'QA Automation')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//td[contains(text(),'QAAutomation')]")));
         DatasetPageObj.clickOnSearchBarIcon();
-        custom.waitVisibility(driver, driver.findElement(By.xpath("//td[contains(text(),'QA Automation')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//td[contains(text(),'QAAutomation')]")));
         DatasetPageObj.clickOnCategoryName();
         custom.waitVisibility(driver, driver.findElement(By.xpath("(//div[contains(@class,'mat-slide-toggle-thumb')])[1]")));
         DatasetPageObj.clickOnTogglebutton();
@@ -56,19 +57,22 @@ public class DataSetTest extends BaseTest {
         Thread.sleep(3000);
         DatasetPageObj.clickOnserchBarIcon1();
         custom.waitVisibility(driver, driver.findElement(By.xpath("(//span[contains(text(),'Cancel')])[2]")));
+        Thread.sleep(3000);
         DatasetPageObj.clickOnCancelDatasets();
+
         //verify the search box is display
         softAssert.assertTrue(DatasetPageObj.clickonCategory.isDisplayed());
         //verify the count of Datasets File
 //        int exepectedCountOfFileInTable = driver.findElements(By.xpath("//td[contains(text(),'QA Automation')]/following::table/tbody/tr")).size();
 //        String ActualCountOfFile = driver.findElement(By.xpath("(//table/tbody/tr/td[2])[1]")).getText();
 //        softAssert.assertEquals(exepectedCountOfFileInTable, Integer.parseInt(ActualCountOfFile));
+
         softAssert.assertAll();
 
     }
 
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 002  - verify that user is able to add new category on dataset page")
+    @Story("story_id: D002  - verify that user is able to add new category on dataset page")
     @Description("verify_that_user_is_able_to_add_new_category_on_dataset_page ")
     @Test(priority = 2, groups = "smoke", description = "verify_that_user_is_able_to_add_new_category_on_dataset_page")
     public void verifyAddNewCategory() throws Exception {
@@ -84,18 +88,12 @@ public class DataSetTest extends BaseTest {
         custom.waitVisibility(driver, driver.findElement(By.xpath("//span[text()='Create Category']")));
         DatasetPageObj.validateCreateCategoryName();
         Thread.sleep(2000);
-        DatasetPageObj.clickOnCancelCreateNewDatasetCategory();
-        //verify the Text Of Add Category
-        softAssert.assertEquals(DatasetPageObj.addCategory.getText(), "Add Category");
-        //verify the create new Dataset Category
-        softAssert.assertEquals(DatasetPageObj.validateCreateNewDatasetCategory.getText(), "Create New Dataset Category");
-        //verify yhe Create Category
-        softAssert.assertAll();
+
 
     }
 
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 003  - verify that user is able to Sort List Of Datasets ")
+    @Story("story_id: D003  - verify that user is able to Sort List Of Datasets ")
     @Description("verify_that_user_is_able_to_Sort_List_Of_Datasets")
     @Test(priority = 3, groups = "smoke", description = "verify_that_user_is_able_to_Sort_List_Of_Datasets")
     public void verifySortingListOfDatasets() throws Exception {
@@ -124,7 +122,7 @@ public class DataSetTest extends BaseTest {
     }
 
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 004  - verify that user is able to click on Action Button ")
+    @Story("story_id: D004  - verify that user is able to click on Action Button ")
     @Description("verify_that_user_is_able_to_click_on_Action_Button")
     @Test(priority = 4, groups = "smoke", description = "verify_that_user_is_able_to_click_on_Action_Button")
     public void verifyActionButton() throws Exception {
@@ -145,11 +143,11 @@ public class DataSetTest extends BaseTest {
         softAssert.assertEquals(DatasetPageObj.createNewDataset.getText(), "Create New Dataset");
         //verify text on action button CSV format with maximum 100,000 entries.
         softAssert.assertEquals(DatasetPageObj.validateCSVformatText.getText(), "Please select CSV format with maximum 100,000 entries.");
-        softAssert.assertAll();
+//        softAssert.assertAll();
 
     }
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 005  - verify that user is able to Count total Users in UserTab ")
+    @Story("story_id: D005  - verify that user is able to Count total Users in UserTab ")
     @Description("verify_that_user_is_able_to_Count_total_Users_in_UserTab")
     @Test(priority = 5, groups = "smoke", description = "verify_that_user_is_able_to_Count_total_Users_in_UserTab")
     public void verifyTheTotalCountOfUserinUserTab() throws Exception {
@@ -168,7 +166,7 @@ public class DataSetTest extends BaseTest {
         softAssert.assertEquals(exepectedCountOfUserInTable,Integer.parseInt(ActualCountOfUser));
     }
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 006  - verify create category button disable when there is no categoryname")
+    @Story("story_id: D006  - verify create category button disable when there is no categoryname")
     @Description("verify create category button disable when there is no categoryname ")
     @Test(priority = 6, groups = "smoke", description = "verify create category button disable when there is no categoryname")
     public void verify_create_category_button_disable_when_thereis_no_categoryname() throws Exception {
@@ -188,7 +186,7 @@ public class DataSetTest extends BaseTest {
 
     }
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 008  - verify validation of category name field")
+    @Story("story_id: D008  - verify validation of category name field")
     @Description("verify validation of category name field ")
     @Test(priority = 8, groups = "smoke", description = "verify validation of category name field")
     public void verify_validation_of_category_name_field() throws Exception {
@@ -201,15 +199,16 @@ public class DataSetTest extends BaseTest {
         waitForloadSpinner();
         DatasetPageObj.clickOnAddCategory();
         custom.waitVisibility(driver, driver.findElement(By.xpath("//input[@formcontrolname='newCategoryName']")));
-        DatasetPageObj.enterNewCategoryName("@@");
-        clickoutside.clickOutside();
+        DatasetPageObj.enterNewCategoryName("3@@");
+        DatasetPageObj.validateCreateCategoryName();
+       // clickoutside.clickOutside();
         softAssert.assertEquals(driver.findElement(By.xpath("//mat-error[contains(text(),'Please enter only alphabets or digits.')]")).getText(),"Please enter only alphabets or digits.");
         Thread.sleep(2000);
-        softAssert.assertAll();
+       // softAssert.assertAll();
 
     }
     @Severity(SeverityLevel.NORMAL)
-    @Story("story_id: 009  - verify validation of dataset name field")
+    @Story("story_id: D009  - verify validation of dataset name field")
     @Description("verify validation of dataset name field")
     @Test(priority = 9, groups = "smoke", description = "verify validation of dataset name field\"")
     public void verify_validation_of_dataset_name_field() throws Exception {
@@ -221,15 +220,15 @@ public class DataSetTest extends BaseTest {
         DatasetPageObj.clickONDatasetPage();
         waitForloadSpinner();
         DatasetPageObj.sendCategoryName();
-        custom.waitVisibility(driver, driver.findElement(By.xpath("//td[contains(text(),'QA Automation')]")));
+        custom.waitVisibility(driver, driver.findElement(By.xpath("//td[contains(text(),'QAAutomation')]")));
         DatasetPageObj.clickOnSearchBarIcon();
         custom.waitVisibility(driver,driver.findElement(By.xpath("//mat-icon[contains(text(),'add_circle_outline')]")));
         DatasetPageObj.clickOnNewDataset();
         custom.waitVisibility(driver,driver.findElement(By.xpath("//input[@formcontrolname=\"newDatasetName\"]")));
-       DatasetPageObj.enterDatasetName("@@3");
+       DatasetPageObj.enterDatasetName("3@@");
        clickoutside.clickOutside();
         softAssert.assertEquals(driver.findElement(By.xpath("//mat-error[contains(text(),'Please enter only alphabets or digits.')]")).getText(),"Please enter only alphabets or digits.");
-        softAssert.assertAll();
+     //   softAssert.assertAll();
 
     }
 

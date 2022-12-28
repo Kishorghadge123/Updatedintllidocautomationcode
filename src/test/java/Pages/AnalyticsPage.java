@@ -20,7 +20,7 @@ public class AnalyticsPage {
         this.driver = driver;
     }
 
-    public static By AnalyticsBtn = By.xpath("(//img[contains(@class,'mat-tooltip-trigger')])[9]");
+    public static By AnalyticsBtn = By.xpath("//img[contains(@src,\"Analytics.svg\")]");
     public static By SelectProject = By.xpath("//input[@placeholder='Search']//following::span[1]");
     By projectListDropDownArrow = By.xpath("//div[@class='col-sm-8 project_list']//span[@class='mat-button-wrapper']");
 

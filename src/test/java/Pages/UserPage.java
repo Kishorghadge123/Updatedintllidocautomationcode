@@ -34,7 +34,7 @@ public class UserPage extends BaseTest {
     @FindBy(xpath = "//button[@class='mat-focus-indicator font-17 mat-mini-fab mat-button-base']")
     public WebElement grid_icon;
 
-    @FindBy(xpath = "//button[contains(@class,'mat-focus-indicator outline-none foregroundColor mat-mini-fab mat-button-base mat-accent ng-star-inserted')]")
+    @FindBy(xpath = "//mat-icon[contains(text(),'create')]")
     public WebElement actionButton;
 
     @FindBy(xpath = "(//input)[4]")
@@ -113,8 +113,6 @@ public class UserPage extends BaseTest {
 
     public void userclickOnUserTab() throws Exception {
         functions = new Functions();
-        waitForloadSpinner();
-        Thread.sleep(10000);
         this.UsersTab.click();
     }
 
@@ -310,6 +308,7 @@ public class UserPage extends BaseTest {
             System.out.println("Stale Element Reference Exception");
             sere.printStackTrace();
             PageFactory.initElements(driver, this);
+
             userTileList = driver.findElements(userTilesLocator);
         }
 
